@@ -1,0 +1,5 @@
+Dracaufeu;1000;1000;50;15;75;150
+Coup de feu;Inflige des brûlures;30;1;2
+Lance flamme;Crache du feu;50;1;4
+Récupération;Soin moyen;125;2;3
+Déflagration;Attaque puissante;160;1;5

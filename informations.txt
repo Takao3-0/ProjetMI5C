@@ -1,0 +1,48 @@
+Formule des dégâts
+
+Sans coup critique :
+    Dégâts finaux = ((Atk × damage) × Atk) / (Atk + Def)
+
+Avec coup critique :
+    Dégâts finaux = [((Atk × damage) × Atk) / (Atk + Def)] × (Dg / 100)
+
+    Dg (Dégâts critiques) est un pourcentage.
+    Si Dg < 100, le coup critique est annulé.
+
+Exemple :
+    Atk = 20
+    Def = 25
+    Damage = 150%
+
+    Dégâts finaux = ((20 × 1.5) × 20) / (20 + 20) = 13.33
+    Avec 0 de défense, l'ennemi aurait reçu 30 dégâts.
+
+    Si coup critique avec Dg = 200 %, les dégâts sont doublés.
+
+------------------------------------------------------------
+
+Système de Réaction Élémentaire (RE)
+Objectif : Complexifier le système de combat pour se démarquer dans CY-Fighters.
+
+Éléments disponibles :
+    - Eau (1)
+    - Feu (2)
+    - Électro (3)
+    - Givre (4)
+
+    Ps: (X) correspond à l'élément dans personnages.txt
+
+Réactions élémentaires :
+
+    Eau + Feu           = Évaporation        → x1.5
+    Feu + Électro       = Surcharge          → x1.3
+    Électro + Eau       = Électrocution      → x1.5
+    Feu + Givre         = Fonte              → x2
+    Givre + Eau         = Gel                → Pas de multiplicateur, l’ennemi ne peut plus attaquer pendant quelques tours 
+    Électro + Givre     = Supraconduction    → x1.3
+
+Remarques :
+    - D'autres combinaisons de RE seront ajoutées à l'avenir.
+    - Certaines réactions pourront appliquer des effets supplémentaires (ex : Supraconduction pourrait baisser la défense ennemie).
+
+    

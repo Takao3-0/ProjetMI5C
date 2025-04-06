@@ -1,0 +1,11 @@
+Dracaufeu;1000;1000;50;15;75;150
+Coup de feu;Inflige des brulures;30;1;2
+Lance flamme;Crache du feu;50;1;4
+Recuperation;Soin moyen;125;2;3
+Deflagration;Attaque puissante;160;1;5
+
+Hydragon;950;950;45;20;30;150
+Jet d'eau;Tire un puissant jet d'eau;40;1;2
+Vague ecrasante;Inflige une vague destructrice;60;1;4
+Brume fraiche;Rend de la vie a l'utilisateur;35;1;3
+Torrent final;Attaque massive en eau concentree;80;1;5
