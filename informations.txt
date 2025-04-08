@@ -26,11 +26,23 @@ Objectif : Complexifier le système de combat pour se démarquer dans CY-Fighter
 
 Éléments disponibles :
     - Eau (1)
-    - Feu (2)
-    - Électro (3)
-    - Givre (4)
+    - Feu (10)
+    - Électro (100)
+    - Givre (1000)
+    -Possiblement (Vent) -> Fonctionnera avec chaque element, la reaction sera une dispersion et cela baissera la defense enemie (mais pas sur de l'implémenter)
 
     Ps: (X) correspond à l'élément dans personnages.txt
+    Les valeurs sont données de t-delle sorte à avoir une valeur différente lorsqu'on fait la somme de 2 element.
+
+    Voir tableau d'exemple ci-dessous
+
+    Élément 1	    Élément 2	    Somme	    Réaction
+    EAU (1)	        FEU (10)	    11	        Evaporation
+    FEU (10)	    ELECTRO(100)	110	        Surcharge
+    ELECTRO(100)	EAU (1)	        101	        Électrocution
+    FEU (10)	    CRYO (1000)	    1010	    Fonte
+    CRYO(1000)	    EAU (1)	        1001	    Freeze
+    ELECTRO(100)	CRYO(1000)	    1100	    Supraconduction
 
 Réactions élémentaires :
 
@@ -38,11 +50,64 @@ Réactions élémentaires :
     Feu + Électro       = Surcharge          → x1.3
     Électro + Eau       = Électrocution      → x1.5
     Feu + Givre         = Fonte              → x2
-    Givre + Eau         = Gel                → Pas de multiplicateur, l’ennemi ne peut plus attaquer pendant quelques tours 
+    Givre + Eau         = Freeze             → Pas de multiplicateur, l’ennemi ne peut plus attaquer pendant quelques tours 
     Électro + Givre     = Supraconduction    → x1.3
 
 Remarques :
     - D'autres combinaisons de RE seront ajoutées à l'avenir.
     - Certaines réactions pourront appliquer des effets supplémentaires (ex : Supraconduction pourrait baisser la défense ennemie).
 
+------------------------------------------------------------
+
+Informations concernant le personnages.txt
+
+Exemple de saisie d'un personnage;
+
+Nom;pv;pvmax;atk;def;tc;dc
+Nom_de_la_capacité;Description_de_la_capacité;damage;type;cd  //*4 pour les 4 capa 
+
+Dracaufeu;1000;1000;50;15;75;150
+Coup de feu;Inflige des brulures;30;2;2
+Lance flamme;Crache du feu;50;2;4
+Récupération;Soin moyen;125;2;3
+Déflagration;Attaque puissante;160;2;5  //corrspond à l'ultime (la capacite spéciale)
+
+------------------------------------------------------------
+
+Fonctionnement de l'ultime
+
+L'ultime (R) est une capacité un peu spéciale, en plus d'un cd classique, elle nécessite, pour être utilisé,
+un certains nombre de point (nom à définir). Ces points se gagneront en utilisant des capacités classique et seront 
+consommé lors de l'utilisation du R. 
+
+Exemple en pratique :
+    Dracaufeu à 3 capacités ;
+        Coup de feu;  15 Pts
+        Lance flamme;  25Pts
+        Récupération;  5Pts
     
+    chaque capacité donne X point d'ultime (comme indique ci-dessus)
+
+    R de dracaugeu 
+        Déflagration; 80 Pts
+    
+    Ainsi pour utiliser son ultime Dracaufeu devra avoir au minimum 80Pts d'ultime (et necessairement son cd à 0)
+    Il peut stack des points d'ultime au delas de 80 dans un limite de 150% du nombre de points requis
+
+    Donc Pts max pour Dracaufeu 
+        80 *1.5 = 120 Pts max 
+
+    Au delas les points reçu seront définitivement perdu 
+
+------------------------------------------------------------
+
+Utilisation des couleurs dans les printf
+Ps : Les couleurs disponibles pour l'instant sont dans le fichier "head.h"
+
+    BLEU -> Correspond aux informations générales
+    VERT -> Instruction utilisateur
+    ROUGE -> Dégâts subits
+    RESET -> Pour retourner sur la couleur de base du terminal (à mettre après chaque couleur sinon c'est bizzare)
+    ...
+
+------------------------------------------------------------

@@ -1,11 +1,23 @@
-Dracaufeu;1000;1000;50;15;75;150
-Coup de feu;Inflige des brulures;30;1;2
-Lance flamme;Crache du feu;50;1;4
-Recuperation;Soin moyen;125;2;3
-Deflagration;Attaque puissante;160;1;5
+Dracaufeu;10000;10000;50;15;75;150
+Coup de feu;Inflige des brulures;30;10;2
+Lance flamme;Crache du feu;50;10;4
+Recuperation;Soin moyen;125;10;3
+Deflagration;Attaque puissante;160;10;5
 
-Hydragon;950;950;45;20;30;150
+Hydragon;9500;9500;45;20;30;150
 Jet d'eau;Tire un puissant jet d'eau;40;1;2
 Vague ecrasante;Inflige une vague destructrice;60;1;4
 Brume fraiche;Rend de la vie a l'utilisateur;35;1;3
 Torrent final;Attaque massive en eau concentree;80;1;5
+
+Kaelen;10000;10000;120;80;20;150
+Éclat de glace;Projette un pic de glace;120;1000;0
+Souffle givré;Ralentit l'ennemi;100;1000;1
+Mur de givre;Crée un mur défensif;0;1000;3
+Tempête glaciale;Invoque une tempête;150;1000;4
+
+Voltix;8500;8500;140;60;25;175
+Décharge;Frappe électrique rapide;110;100;0
+Champ magnétique;Réduit l'attaque ennemie;0;100;2
+Arc électrique;Cible plusieurs ennemis;130;100;3
+Surcharge;Inflige de lourds dégâts;160;100;5

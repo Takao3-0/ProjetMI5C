@@ -1,0 +1,2 @@
+Ici on pourra mettre des noms d'equipe pour le bot
+Le jeux choisira un nom d'équipe aléatoirement parmis la liste présente ici. 
