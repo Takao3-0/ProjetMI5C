@@ -13,3 +13,5 @@
 #define ROSE "\x1b[38;5;201m"
 #define VIOLET "\x1b[38;5;135m"
 #define ORANGE "\x1b[38;5;208m"
+#define BLEUC "\x1b[38;5;117m"
+#define BLEUF "\x1b[38;5;19m"

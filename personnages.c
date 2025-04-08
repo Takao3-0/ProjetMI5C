@@ -1,6 +1,5 @@
 #include "head.h"
 #include "personnages.h"
-#define PERSONNAGEQ 4 //nombre de personnage dans le jeu
 
 Personnage * extract(void){
     FILE * fic=NULL;
