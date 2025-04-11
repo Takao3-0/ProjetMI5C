@@ -1,4 +1,4 @@
-Dracaufeu;10000;10000;50;15;75;150
+Dracaufeu;10000;10000;;15;75;150
 Coup de feu;Inflige des brulures;30;10;2
 Lance flamme;Crache du feu;50;10;4
 Recuperation;Soin moyen;125;10;3
@@ -21,3 +21,9 @@ Décharge;Frappe électrique rapide;110;100;0
 Champ magnétique;Réduit l'attaque ennemie;0;100;2
 Arc électrique;Cible plusieurs ennemis;130;100;3
 Surcharge;Inflige de lourds dégâts;160;100;5
+
+Glacius;9000;9000;130;70;30;180
+Frisson glacial;Attaque rapide;100;1000;0
+Mur de glace;Augmente la défense;0;1000;2
+Coup givrant;Ralentit l'ennemi;120;1000;3
+Avalanche;Inflige de lourds dégâts;170;1000;5

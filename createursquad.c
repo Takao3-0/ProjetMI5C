@@ -1,5 +1,6 @@
 #include "personnages.h"
 #include "createursquad.h"
+#include "affichage.h"
 #define SQUADASSEMBLEUR 2 //Constante pour le nombre de personnage dans l'équipe
 
 
@@ -10,8 +11,10 @@ Equipe_deux * assembleur_squad_deux(Personnage *tablist, int num){
         exit(1);
     }
     int perso;
-    printf(BLEU"Avant de commencer veuillez choisir un nom de l'equipe numero %d\n"RESET, num);
+    selectname(num);
+    //printf(BLEU"Avant de commencer veuillez choisir un nom de l'equipe numero %d\n"RESET, num);
     scanf("%s", a->name);
+    selectplayerv2(tablist);
     printf(BLEU"Avant de commencer un combat, vous devez egalement composer votre équipe.\n"RESET
     "    La liste des personnages disponibles est la suivante.\n");
     for (int i=0; i<PERSONNAGEQ; i++){

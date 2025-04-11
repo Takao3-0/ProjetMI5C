@@ -111,3 +111,8 @@ Ps : Les couleurs disponibles pour l'instant sont dans le fichier "head.h"
     ...
 
 ------------------------------------------------------------
+
+Les artéfacts;
+    Features importante qui vont compléxifier les combats en ajoutant un aspect stratégique suplémentaire
+
+    

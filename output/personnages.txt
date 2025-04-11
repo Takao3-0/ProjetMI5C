@@ -1,4 +1,4 @@
-Dracaufeu;10000;10000;50;15;75;150
+Dracaufeu;10000;10000;1210;15;75;150
 Coup de feu;Inflige des brulures;30;10;2
 Lance flamme;Crache du feu;50;10;4
 Recuperation;Soin moyen;125;10;3
