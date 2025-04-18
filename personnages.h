@@ -1,7 +1,7 @@
 #ifndef PERSONNAGES_H
 #define PERSONNAGES_H
 #include "head.h"
-#define PERSONNAGEQ 5 //nombre de personnage dans le jeu
+#define PERSONNAGEQ 10 //nombre de personnage dans le jeu
 
 #define COMPO 40
 
@@ -22,6 +22,7 @@ typedef struct {
     int tc; // Taux critique (exprimé en %)
     int dc; // Multiplicateur de dégât en cas de coup critique (exprimé en %)
     int type; //Type élémentaire par lequel le personnage actuel est appliqué
+    int rarete; //rareté du personnage 4 étoiles ou 5 étoiles 
     Capa listedescapacites[4]; // Les capacités du perso
 } Personnage;
 

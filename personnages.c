@@ -12,21 +12,23 @@ Personnage * extract(void){
             if(fgets(chaine,50,fic)!= NULL){
                 //printf(VERT"%s"RESET,chaine);
             }
-            sscanf(chaine, "%[^;];%d;%d;%d;%d;%d;%d", 
+            sscanf(chaine, "%[^;];%d;%d;%d;%d;%d;%d;%d", 
                 perso.name,
                 &perso.pv,
                 &perso.pvmax,
                 &perso.atk,
                 &perso.def,
                 &perso.tc,
-                &perso.dc);
+                &perso.dc,
+                &perso.rarete);
             /*printf("Nom recupere : %s\n", perso.name);  //à terme ces printfs disparaiterons.
             printf("PV Actuels : %d\n", perso.pv); 
             printf("Pv maximum : %d\n", perso.pvmax); 
             printf("Attaque de base : %d\n", perso.atk); 
             printf("Defence : %d\n", perso.def); 
             printf("Taux critique : %d\n", perso.tc); 
-            printf("Degats critique : %d\n", perso.dc);*/
+            printf("Degats critique : %d\n", perso.dc);
+            printf("Rarete du personnage %d étoiles\n", perso.rarete);*/
             for (int j=0;j<4;j++){
                 fgets(chaine,60,fic);
                 //printf(VIOLET"%s\n"RESET,chaine);
@@ -47,7 +49,7 @@ Personnage * extract(void){
                     perso.listedescapacites[j].description,
                     perso.listedescapacites[j].damage,
                     perso.listedescapacites[j].type,
-                    perso.listedescapacites[j].cd);*/ 
+                    perso.listedescapacites[j].cd);*/
             }    
             fgets(chaine,50,fic);
             listeperso[i] = perso;

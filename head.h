@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 //Importation des couleurs 
 
@@ -15,3 +16,13 @@
 #define ORANGE "\x1b[38;5;208m"
 #define BLEUC "\x1b[38;5;117m"
 #define BLEUF "\x1b[38;5;19m"
+
+
+//Couleur pour le dégrade
+#define ORANGE_CLAIR      "\x1b[38;5;214m"
+#define ORANGE_TRES_CLAIR "\x1b[38;5;220m"
+#define BLEU_CLAIR         "\x1b[38;5;123m"
+#define BLEU_CLAIR2        "\x1b[38;5;147m"
+#define VIOLET_CLAIR       "\x1b[38;5;177m"
+#define VIOLET_CLAIR2      "\x1b[38;5;141m"
+#define VIOLET_TRES_CLAIR    "\x1b[38;5;183m"

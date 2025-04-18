@@ -2,13 +2,18 @@
 #define AFFICHAGE_H
 #include "head.h"
 #include "personnages.h"
+#include "createursquad.h"
 
-#define SIZELINE 125
+#define SIZELINE 148
 
 void mainscreen();
 void selectplayer(Personnage *tabperso);
 void selectname(int num);
-void selectplayerv2(Personnage * tablist2);
+void selectplayerv2(Personnage * tablist2, int num, Equipe_deux * a);
+void secondscreen();
+void mainscreenerror();
+void screenerror();
+void procedure_mere_affichage_fight(Equipe_deux *a, Equipe_deux *b, int tour, Personnage *attaquant, Personnage *defenseur, int atk, int crit, int degat, int cle, int elmt, int react);
 
 
 
