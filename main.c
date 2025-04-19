@@ -16,8 +16,8 @@ int main() {
         printf("Erreur lors de l'extraction des personnages.\n");
         return 1;
     }
-    Equipe_deux * a;
-    Equipe_deux * b;
+    Equipe_quatre * a;
+    Equipe_quatre * b;
     do {
         if (z =! -19){
             mainscreen();
@@ -42,8 +42,8 @@ int main() {
                         }
                         break;
                     case 4:  //on crée notre équipe  (et l'équipe adverse temporairement);
-                        a = assembleur_squad_deux(tabPerso,1);
-                        b = assembleur_squad_deux(tabPerso,2);
+                        a = assembleur_squad_quatre(tabPerso,1);
+                        b = assembleur_squad_quatre(tabPerso,2);
                         zz = 0;
                         break;
                     case 5: // boutique 
@@ -68,17 +68,6 @@ int main() {
         }
     }while (z != 1 || z!= 2 || z!= 3 || z != 4);
     // Envoi du tableau à la fonction de combat
-
-    /*Equipe_deux a,b;
-    a.tab[0] = tabPerso[0];
-    a.tab[1] = tabPerso[1];
-    b.tab[0] = tabPerso[2];
-    b.tab[1] = tabPerso[3];
-    printf(BLEU"Avant de commencer veuillez choisir un nom d' equipe\n"RESET);
-    scanf("%s", a.name);
-    printf(BLEU"Entrez egalement le nom de la seconde equipe\n"RESET);  //A terme on aura un fichier texte avec plusieurs noms d'équipe et un sera pris au hasard pour jouer l'équipe du bot.
-    scanf("%s", b.name);*/
-    // Libération de la mémoire allouée
     free(tabPerso);
     return 0;
 }

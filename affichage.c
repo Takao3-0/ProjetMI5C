@@ -115,7 +115,7 @@ void selectname(int num){
 }
 
 
-void selectplayerv2(Personnage *tablist2, int num, Equipe_deux *a){
+void selectplayerv2(Personnage *tablist2, int num, Equipe_quatre *a){
     int i=0;
     int f=0;
     int z = 0;
@@ -214,21 +214,12 @@ void selectplayerv2(Personnage *tablist2, int num, Equipe_deux *a){
                 }
             }
             printf("\n");
-            printf("│ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ │\n"
-            "│                                                                                                                                                  │\n");
+            printf("│ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ │\n");
             f+=5;
             z++;;
-        } else if (z == 17) {
-            printf("│                                                         "VERT"Ci-dessus les SUBS 4 & 5 etoiles."RESET
-                    "                                                        │\n");
-            z++;
-        } else if (z == 13){
-            printf("│                                                         "VERT"Ci-dessus les DPS 4 & 5 etoiles."RESET
-                "                                                         │\n");
-            z++;
-
-        } else if (z == 20){
-            printf("│                                                    "BLEU"Choissiez le personnage qui attaquera en %d"RESET
+            fgets(ligne1, sizeof(ligne1),perso);
+        } else if (z == 14){
+            printf("  │\n│                                                    "BLEU"Choissiez le personnage qui attaquera en %d"RESET
                 "                                                    │\n",num);
             z++;
 
@@ -250,10 +241,12 @@ void selectplayerv2(Personnage *tablist2, int num, Equipe_deux *a){
                 
                 }
             }
+            fgets(ligne1, sizeof(ligne1),perso);
+            
         }
         else {
             z++;
-            printf("%s", ligne1);
+            printf("%s"RESET, ligne1);
         }
 
     }
@@ -275,28 +268,28 @@ void secondscreen(){
     fclose(menu);
 }
 
-void printequipe(Equipe_deux *a){
+void printequipe(Equipe_quatre *a){
     char temp[20];
     int i=0;
-    for (int j=0;j<2;j++){
+    for (int j=0;j<4;j++){
         sprintf(temp, "%s", a->tab[j].name);
         i = strlen(temp);
         printf("│ │ Nom : %s", a->tab[j].name);
         for (int h=0; h<19-i;h++){
             printf(" ");
-            if (j == 1 && h==(19-i)-1){
+            if (j == 3 && h==(19-i)-1){
                 printf("│ │");
             }
         }
     }
     printf("\n");
-    for (int j=0;j<2;j++){
+    for (int j=0;j<4;j++){
         sprintf(temp, "%d", a->tab[j].pv);
         i = strlen(temp);
         printf("│ │ PV : %d", a->tab[j].pv);
         for (int h=0; h<20-i;h++){
             printf(" ");
-            if (j == 1 && h==(20-i)-1){
+            if (j == 3 && h==(20-i)-1){
                 printf("│ │");
             }
         }
@@ -305,75 +298,16 @@ void printequipe(Equipe_deux *a){
 }
 
 
-void combatscreenresult(Equipe_deux *a, Equipe_deux *b, int tour, Personnage *attaquant, Personnage *defenseur, Equipe_deux *main, int atk, Equipe_deux *def,int crit, int degat){
-    int taille = 0;
-    int equipe = 0;
-    char temp[20];
-    FILE *fightresult = fopen("asset/combat/combatscreenresult.txt", "r");
-    if (fightresult == NULL) {
-        printf(ROUGE"Impossible d'ouvrir le menu principal.\n"RESET);
-        return;
-    }
-    char ligne[SIZELINE];
-    while (fgets(ligne, sizeof(ligne), fightresult) != NULL) {
-        if (strstr(ligne, "Informations")){
-            printf("│   "BLEU"Informations générales : "VERT"Tour numéro %d"BLEU". "ORANGE"L'équipe "ROUGE"%s"ORANGE" a la main. C'est au tour de "ROUGE"%s"ORANGE" d'attaquer."RESET
-            ,tour+1, main->name,attaquant->name);
-            for (int i=0; i<51-strlen(main->name)-strlen(attaquant->name); i++){
-                printf(" ");
-            }
-        } else if (strstr(ligne, "1:")){
-            printf("│   Equipe 1: "BLEUC"%s"RESET,a->name); 
-            for (int i=0; i<131-strlen(a->name); i++){
-                printf(" ");
-            }   
-        } else if (strstr(ligne, "2:")){
-            printf("│   Equipe 2: "VIOLET"%s"RESET,b->name); 
-            for (int i=0; i<131-strlen(b->name); i++){
-                printf(" ");
-            }   
-        } else if(strstr(ligne, "┌──────────────────────────┐")){
-            printf("│ ┌──────────────────────────┐ ┌──────────────────────────┐ ┌──────────────────────────┐ ┌──────────────────────────┐ ┌──────────────────────────┐ │\n", ligne);
-            if (equipe == 0){
-                printequipe(a);
-                equipe++;    
-            } else {
-                printequipe(b);
-            }
-            printf("│ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ └──────────────────────────┘ │\n");
-            fgets(ligne, sizeof(ligne), fightresult);
-        } else if (strstr(ligne, "Resultat")){
-            printf("│   Les dégats finaux sont de : %d",degat);
-            sprintf(temp, "%s", degat);
-            taille = strlen(temp);
-            for (int i=0;i<taille;i++){
-                printf(" ");
-            }
-            printf("│\n");
-            if (crit == 1 ){
-                printf("│    Coup critique!                                                                                                                                │\n");
-                fgets(ligne, sizeof(ligne), fightresult);
-            } else {
-                printf("│                                                                                                                                                 │\n");
-            }
-        }
-    }                               
-    printf("\n");
-    fclose(fightresult);
-}
-
-
-
 //La procédure ci-dessous a seulement pour but de gérer la partie haute de l'affichage
 
-void fight_affichage_informations_fixe(int tour,Personnage * attaquant, Equipe_deux *a, Equipe_deux *b){ 
+void fight_affichage_informations_fixe(int tour,Personnage * attaquant, Equipe_quatre *a, Equipe_quatre *b){ 
     int equipe = 0;
     FILE * fixedscreen = fopen("asset/combat/fixedscreen.txt", "r");
     if (fixedscreen == NULL) {
         printf(ROUGE"Impossible d'ouvrir le menu principal.\n"RESET);
         return;
     }
-    Equipe_deux * main;
+    Equipe_quatre * main;
     if (tour % 2 == 0){  //Equipe A qui attaque
         main = a;
     } else {  //Equibe B qui attaque
@@ -449,8 +383,8 @@ void fight_affichage_attaque (Personnage * attaquant){
     fclose(attaqueselect);
 }
 
-void fight_affichage_cible(Equipe_deux *a, Equipe_deux *b, Personnage *attaquant,int tour, int atk){
-    Equipe_deux * defenseur;
+void fight_affichage_cible(Equipe_quatre *a, Equipe_quatre *b, Personnage *attaquant,int tour, int atk){
+    Equipe_quatre * defenseur;
     FILE * atkselect = fopen("asset/combat/attaqueselect.txt", "r");
     if (atkselect == NULL) {
         printf(ROUGE"Impossible d'ouvrir le menu principal.\n"RESET);
@@ -475,7 +409,7 @@ void fight_affichage_cible(Equipe_deux *a, Equipe_deux *b, Personnage *attaquant
                 printf(" ");
             }       
             printf("│\n");
-            for (int i=0;i<2;i++){
+            for (int i=0;i<4;i++){
                 printf("│"JAUNE"        Defenseur numéro %d : %s"RESET,i+1, defenseur->tab[i].name);
                 for (int k=0;k<117-strlen(defenseur->tab[i].name);k++){
                     printf(" ");                      
@@ -495,9 +429,9 @@ void fight_affichage_cible(Equipe_deux *a, Equipe_deux *b, Personnage *attaquant
 const char *get_element_name(int elmt) {
         switch (elmt) {
             case 1:    
-                return "Eau";
+                return "Hydro";
             case 10:   
-                return "Feu";
+                return "Pyro";
             case 100:  
                 return "Electro";
             case 1000: 
@@ -582,8 +516,11 @@ void reaction_affichage(int react){
             BLEU_CLAIR2  "D"
             BLEU         "U"
             BLEUC        "C"
-            BLEU_CLAIR2  "T"RESET
-            "                                                                                                                                │\n");
+            BLEU_CLAIR2  "T"
+            "I"
+            "O"
+            "N"RESET
+            "                                                                                                                             │\n");
      break;
         default:
             printf(ROUGE"Erreur.\n"RESET);
@@ -608,12 +545,12 @@ void fight_affichage_result(Personnage *defenseur,int crit,int degat, int elmt,i
                     reaction_affichage(react);
                     fgets(ligne,sizeof(ligne),result);
                 }
-                printf("│      %s, se voit infligé %d dégâts. Il est affecté par l'element %s.",defenseur,degat,element);
+                affichage_element(defenseur,degat,elmt);
                 while (n > 0) {
                     n /= 10;
                     ++taille;
                 }
-                for (int i=0;i<76-taille-strlen(element)-strlen(defenseur->name);i++){
+                for (int i=0;i<84-taille-strlen(element)-strlen(defenseur->name);i++){
                     printf(" ");
                 }
                 printf("│\n");
@@ -623,15 +560,16 @@ void fight_affichage_result(Personnage *defenseur,int crit,int degat, int elmt,i
                     reaction_affichage(react);
                     fgets(ligne,sizeof(ligne),result);
                 }
-                printf("│      %s, se voit infligé %d dégâts. Il est affecté par l'element %s.",defenseur,degat,element);
-                    while (n > 0) {
-                        n /= 10;
-                        ++taille;
-                    }
-                    for (int i=0;i<77-taille-strlen(element);i++){
-                        printf(" ");
-                    }
-                    printf("│\n");
+                affichage_element(defenseur,degat,elmt);
+                while (n > 0) {
+                    n /= 10;
+                    ++taille;
+                }
+                for (int i=0;i<84-taille-strlen(element)-strlen(defenseur->name);i++){
+                        rintf(" ");
+                }
+                printf("│\n");
+                fgets(ligne ,sizeof(ligne),result);    
             }  
         } else {
             printf("%s",ligne);
@@ -642,7 +580,7 @@ void fight_affichage_result(Personnage *defenseur,int crit,int degat, int elmt,i
 }
 
 //Je m'en occuperais plus tard!
-void procedure_mere_affichage_fight(Equipe_deux *a, Equipe_deux *b, int tour, Personnage *attaquant, Personnage *defenseur, int atk, int crit, int degat, int cle, int elmt,int react){
+void procedure_mere_affichage_fight(Equipe_quatre *a, Equipe_quatre *b, int tour, Personnage *attaquant, Personnage *defenseur, int atk, int crit, int degat, int cle, int elmt,int react){
     switch (cle){
         case 1: //Affichage du premier écran (celui ou le joueur choisi ses attaques parmis la liste disponible)
             fight_affichage_informations_fixe(tour,attaquant,a,b);

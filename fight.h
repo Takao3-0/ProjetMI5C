@@ -6,10 +6,7 @@
 
 //
 typedef struct{ //Equipe de 4 personnages
-    Personnage a;
-    Personnage b;
-    Personnage c;
-    Personnage d;
+    Personnage tab[4];
     char name[NAME];
 }Equipe_quatre;
 
@@ -18,6 +15,6 @@ typedef struct{ //Equipe de 2 personnages seulement pour la version d'essais du 
     char name[NAME];
 }Equipe_deux;
 
-void fight(Equipe_deux * equipea, Equipe_deux * equipeb);
+void fight(Equipe_quatre * equipea, Equipe_quatre * equipeb);
 
 #endif

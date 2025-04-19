@@ -9,12 +9,12 @@
 void mainscreen();
 void selectplayer(Personnage *tabperso);
 void selectname(int num);
-void selectplayerv2(Personnage * tablist2, int num, Equipe_deux * a);
+void selectplayerv2(Personnage * tablist2, int num, Equipe_quatre * a);
 void secondscreen();
 void mainscreenerror();
 void screenerror();
-void procedure_mere_affichage_fight(Equipe_deux *a, Equipe_deux *b, int tour, Personnage *attaquant, Personnage *defenseur, int atk, int crit, int degat, int cle, int elmt, int react);
-
+void procedure_mere_affichage_fight(Equipe_quatre *a, Equipe_quatre *b, int tour, Personnage *attaquant, Personnage *defenseur, int atk, int crit, int degat, int cle, int elmt, int react);
+void affichage_element(Personnage *defenseur,int degat, int elmt);
 
 
 #endif

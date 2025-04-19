@@ -38,7 +38,7 @@ int damage(Personnage attaquant, Personnage * defenseur,int capa, int *crit, int
     return degats; //On return de force un entier, plus simple de travailler avec des entier dans le contexte du jeu.
 }
 
-int equipe_morte(Equipe_deux equipe){  //on utilisera cette fonction des lors qu'on aura des equipe a plusieurs 4 perso
+int equipe_morte(Equipe_quatre equipe){  //on utilisera cette fonction des lors qu'on aura des equipe a plusieurs 4 perso
     if (equipe.tab[0].pv <=0 && equipe.tab[1].pv <=0){
         return 1;
     } else {
@@ -89,7 +89,16 @@ int verification_type(Personnage * attaquant, Personnage *defenseur, int capa, i
     }
 }
 
-//void procedure_mere_affichage_fight(Equipe_deux *a, Equipe_deux *b, int tour, Personnage *attaquant, Personnage *defenseur, int atk, int crit, int degat, int cle);
+int verification(Equipe_quatre a){
+    int rturn = 0;
+    for (int i=0; i<4; i++){
+        if (a.tab[i].pv <= 0){
+            rturn++; 
+        }
+    }
+    return rturn;
+}
+
 
 
 /*
@@ -102,7 +111,7 @@ Déroule d'un fight
 */
 
 // Boucle principale de combat entre deux équipes de deux personnages
-void fight(Equipe_deux *equipea, Equipe_deux *equipeb){ //Fonction mère de la gestion du combat
+void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de la gestion du combat
     int compteur_de_tour = 0;
     int clé = 0;
     int degat = 0;
@@ -111,12 +120,11 @@ void fight(Equipe_deux *equipea, Equipe_deux *equipeb){ //Fonction mère de la g
     int crit = 0;
     int elmt = 0;              // type élémentaire final
     srand(time(NULL));
-    Equipe_deux equipe_a;
-    Equipe_deux equipe_b;
-    int equipeA, equipeB; //variable qui gere si les equipes sont morte
+    Equipe_quatre equipe_a; 
+    Equipe_quatre equipe_b;
 
     do {
-        for (int i = 0; i < 2; ++i) {  // 2 personnages par équipe
+        for (int i = 0; i < 4; ++i) {  // 2 personnages par équipe
             if (compteur_de_tour % 2 == 0) { // Equipe A qui attaque
 
                 procedure_mere_affichage_fight(equipea, equipeb,
@@ -131,7 +139,7 @@ void fight(Equipe_deux *equipea, Equipe_deux *equipeb){ //Fonction mère de la g
                                                 &equipea->tab[i], &equipeb->tab[i],
                                                 atk, 0, 0, 2, 0,0);
                 do { scanf("%d", &adversaire); }
-                while (adversaire < 1 || adversaire > 2);
+                while (adversaire < 1 || adversaire > 4);
 
                 crit = 0;
                 elmt  = 0;
@@ -160,7 +168,7 @@ void fight(Equipe_deux *equipea, Equipe_deux *equipeb){ //Fonction mère de la g
                                                 &equipeb->tab[i], &equipea->tab[i],
                                                 atk, 0, 0, 2, 0,0);
                 do { scanf("%d", &adversaire); }
-                while (adversaire < 1 || adversaire > 2);
+                while (adversaire < 1 || adversaire > 4);
 
                 crit = 0;
                 elmt  = 0;
@@ -182,7 +190,7 @@ void fight(Equipe_deux *equipea, Equipe_deux *equipeb){ //Fonction mère de la g
             equipea->tab[0].pv = equipea->tab[1].pv = 0;
         }
         ++compteur_de_tour;
-    } while ((equipea->tab[0].pv > 0 || equipea->tab[1].pv > 0) && (equipeb->tab[0].pv > 0 || equipeb->tab[1].pv > 0));
+    } while ((verification(equipe_a)!= 4 || verification(equipe_b)!=4));
 }
 
 

@@ -1,7 +1,7 @@
 #ifndef PERSONNAGES_H
 #define PERSONNAGES_H
 #include "head.h"
-#define PERSONNAGEQ 10 //nombre de personnage dans le jeu
+#define PERSONNAGEQ 15 //nombre de personnage dans le jeu
 
 #define COMPO 40
 
