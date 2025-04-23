@@ -1,0 +1,21 @@
+Lame du Phénix Incandescent;674;22
+0;0;0;0;44
+
+Glaive de l’Aurore Boréale;608;22
+0;0;0;44;0
+
+Faux du Souffle Polaire;542;23
+82;0;0;0;0
+
+Arc de l’Onde Sereine;674;24
+0;0;0;22;0
+
+Rapière des Vagues Cristallines;608;22
+0;0;82;0;0
+
+Lance de la Brume Givrée;608;21
+0;0;0;0;88
+
+Bâton de la Foudre Astrale;674;21
+0;0;0;22;0
+

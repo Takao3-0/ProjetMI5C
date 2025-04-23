@@ -16,5 +16,6 @@ typedef struct{ //Equipe de 2 personnages seulement pour la version d'essais du 
 }Equipe_deux;
 
 void fight(Equipe_quatre * equipea, Equipe_quatre * equipeb);
+int verification(Equipe_quatre a);
 
 #endif

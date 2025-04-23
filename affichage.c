@@ -566,7 +566,7 @@ void fight_affichage_result(Personnage *defenseur,int crit,int degat, int elmt,i
                     ++taille;
                 }
                 for (int i=0;i<84-taille-strlen(element)-strlen(defenseur->name);i++){
-                        rintf(" ");
+                        printf(" ");
                 }
                 printf("│\n");
                 fgets(ligne ,sizeof(ligne),result);    
