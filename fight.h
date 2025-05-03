@@ -17,5 +17,6 @@ typedef struct{ //Equipe de 2 personnages seulement pour la version d'essais du 
 
 void fight(Equipe_quatre * equipea, Equipe_quatre * equipeb);
 int verification(Equipe_quatre a);
+int randtc();
 
 #endif

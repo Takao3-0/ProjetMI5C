@@ -18,6 +18,7 @@ void mainscreen(){
     while (fgets(ligne, sizeof(ligne), menu) != NULL) {
         printf("%s", ligne); 
     }
+    printf("\n");
     fclose(menu);
 }
 

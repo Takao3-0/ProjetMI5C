@@ -8,7 +8,7 @@ Ember Wyrm;4800;270;130;2
 Braises Infernales;120;10;1
 Souffle d’Embrasement;140;10;2
 Pluie de Météores;160;10;3
-Cœur Enflammé;0;10;1
+Cœur Enflammé;200;10;2
 
 Frost Colossus;5200;230;180;3
 Pique Glaciaire;115;1000;1
@@ -26,4 +26,4 @@ Abyssal Titan;6000;220;200;5
 Morsure des Profondeurs;105;1;1
 Charge Abyssale;125;10;2
 Courant Tonitruant;145;100;2
-Étreinte Polaire;0;1000;1
+Étreinte Polaire;140;1000;1

@@ -195,3 +195,5 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de 
 
 
 
+
+

@@ -6,6 +6,7 @@
 #include "key.h"
 #include "createursquad.h"
 #include "fight.h"
+#include "assembleurboss.h"
 #define BOSSQ 5
 
 typedef struct{
@@ -25,5 +26,10 @@ typedef struct{
     int identifiant;
     Capacite listecb[4];
 }Boss;
+
+
+Boss * extract_boss(void);
+Config_lvl * extract_lvl(void);
+void fight_boss(Boss * atboss, Config_lvl * configlvl, Equipe_quatre * equipe);
 
 #endif
