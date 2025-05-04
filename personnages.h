@@ -24,9 +24,14 @@ typedef struct {
     int type; //Type élémentaire par lequel le personnage actuel est appliqué
     int rarete; //rareté du personnage 4 étoiles ou 5 étoiles 
     Capa listedescapacites[4]; // Les capacités du perso
+    Perso_select NOM;
+    SDL_Texture *texture;
+    int pos; //position dans l'affichage;
+
 } Personnage;
 
-Personnage * extract(void);
+Personnage * extract();
+void attribution_texture(Personnage *tablist);
 
 #endif
 

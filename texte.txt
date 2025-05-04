@@ -1,0 +1,84 @@
+void affichage(SDL_Renderer *ren, Perso_select archive_etat, Game_state etat, Perso_select selection, Equipe_quatre equipea){
+    SDL_RenderClear(ren); //On efface tout
+    switch (etat) {
+        case MENU:
+            SDL_RenderCopy(ren, screenMenu, NULL, NULL);
+            break;
+        case MENUP:
+            SDL_RenderCopy(ren, screenPlay, NULL, NULL);
+            break;
+        case EQUIPE:
+            SDL_RenderCopy(ren, screenEquipe, NULL, NULL);
+            //squad_affichage(ren, equipea);
+
+            break;
+        case ARCHIVE:
+            switch (archive_etat){
+                case CRIONA:
+                    SDL_RenderCopy(ren, archiveCriona, NULL, NULL);  
+                    break; 
+                case GLACIUS:
+                    SDL_RenderCopy(ren, archiveGlacius, NULL, NULL);  
+                    break; 
+                case TERROREX:
+                    SDL_RenderCopy(ren, archiveTerrorex, NULL, NULL);  
+                    break;
+                case VULCAIN:
+                    SDL_RenderCopy(ren, archiveVulcain, NULL, NULL);  
+                    break;
+                case CALYRA:
+                    SDL_RenderCopy(ren, archiveCalyra, NULL, NULL);  
+                    break; 
+                case AQUALIS:
+                    SDL_RenderCopy(ren, archiveAqualis, NULL, NULL);  
+                    break;       
+                case ARCANISTE:
+                    SDL_RenderCopy(ren, archiveArcaniste, NULL, NULL);  
+                    break;    
+                case VOLTIX:
+                    SDL_RenderCopy(ren, archiveVoltix, NULL, NULL);  
+                    break;  
+                case NOVA:
+                    SDL_RenderCopy(ren, archiveNova, NULL, NULL);  
+                    break;                                
+            }
+            break;
+        case SELECTION:
+            switch (archive_etat){
+                case CRIONA:
+                    SDL_RenderCopy(ren, AddCriona, NULL, NULL);  
+                    break; 
+                case GLACIUS:
+                    SDL_RenderCopy(ren, AddGlacius, NULL, NULL);  
+                    break; 
+                case TERROREX:
+                    SDL_RenderCopy(ren, AddTerrorex, NULL, NULL);  
+                    break;
+                case VULCAIN:
+                    SDL_RenderCopy(ren, AddVulcain, NULL, NULL);  
+                    break;
+                case CALYRA:
+                    SDL_RenderCopy(ren, AddCalyra, NULL, NULL);  
+                    break; 
+                case AQUALIS:
+                    SDL_RenderCopy(ren, AddAqualis, NULL, NULL);  
+                    break;       
+                case ARCANISTE:
+                    SDL_RenderCopy(ren, AddArcaniste, NULL, NULL);  
+                    break;    
+                case VOLTIX:
+                    SDL_RenderCopy(ren, AddVoltix, NULL, NULL);  
+                    break;  
+                case NOVA:
+                    SDL_RenderCopy(ren, AddNova, NULL, NULL);  
+                    break;                                
+            }                
+            break;
+        default:
+            break;
+    }
+
+
+    SDL_RenderPresent(ren);
+    SDL_Delay(16);
+}

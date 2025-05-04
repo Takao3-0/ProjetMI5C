@@ -1,6 +1,5 @@
 #include "head.h"
 #include "personnages.h"
-#include "affichage.h"
 
 int better_scan_int(int a, int b) {
     int c;

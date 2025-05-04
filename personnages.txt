@@ -1,4 +1,4 @@
-Dracaufeu;10000;10000;50;75;75;150;5
+Embera;10000;10000;50;75;75;150;5
 Coup de feu;Inflige des brulures;30;10;2
 Lance flamme;Crache du feu;50;10;4
 Recuperation;Soin moyen;125;10;3
@@ -46,13 +46,13 @@ Lame de Givre;Projette une lame de glace;50;1000;2
 Armure Gelée;Augmente fortement la défense;0;1000;3
 Éruption Glacée;Attaque ultime;200;1000;8
 
-Electrobyte;950;950;65;18;85;170;5
+Nova;950;950;65;18;85;170;5
 Éclair Rapide;Lance un éclair fulgurant;35;100;2
 Choc Électrique;Fait étourdir l'adversaire;45;100;3
 Bouclier Ionique;Crée un bouclier électrifié;0;100;2
 Foudre Divine;Attaque ultime;180;100;6
 
-Emberon;800;800;70;12;95;180;5
+Calyra;800;800;70;12;95;180;5
 Brasier;Une attaque rapide enflammée;40;10;2
 Flamme Jumelle;Deux attaques de feu;50;10;3
 Rugissement de Feu;Augmente l'attaque;0;10;2
@@ -76,7 +76,7 @@ Choc Tonnerre;Produit un éclair puissant;60;100;3
 Champ Statique;Augmente l'esquive;0;100;4
 Foudre Déchaînée;Déchaîne plusieurs éclairs;90;100;5
 
-Cryona;820;820;68;18;90;165;5
+Criona;820;820;68;18;90;165;5
 Pique de Glace;Projette une épine glacée;45;1000;2
 Vent Polaire;Réduit la vitesse de l'ennemi;0;1000;3
 Avalanche;Fait tomber une avalanche de glace;75;1000;4

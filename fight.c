@@ -1,7 +1,6 @@
 #include "head.h"
 #include "fight.h"
 #include "personnages.h"
-#include "affichage.h"
 
 //Ce porgramme porte sur les fight entre vrai utilisateur, pas d'IA disponible
 
@@ -127,17 +126,9 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de 
         for (int i = 0; i < 4; ++i) {  // 2 personnages par équipe
             if (compteur_de_tour % 2 == 0) { // Equipe A qui attaque
 
-                procedure_mere_affichage_fight(equipea, equipeb,
-                                                compteur_de_tour,
-                                                &equipea->tab[i], &equipeb->tab[i],
-                                                0, 0, 0, 1, 0,0);
                 do { scanf("%d", &atk); }
                 while (atk < 1 || atk > 4);
 
-                procedure_mere_affichage_fight(equipea, equipeb,
-                                                compteur_de_tour,
-                                                &equipea->tab[i], &equipeb->tab[i],
-                                                atk, 0, 0, 2, 0,0);
                 do { scanf("%d", &adversaire); }
                 while (adversaire < 1 || adversaire > 4);
 
@@ -149,24 +140,12 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de 
                                &crit, &elmt);
                 equipeb->tab[adversaire - 1].pv -= degat;
                 printf("Valeur de elm %d\n",elmt);
-                procedure_mere_affichage_fight(equipea, equipeb,
-                                                compteur_de_tour,
-                                                &equipea->tab[i], &equipeb->tab[adversaire - 1],
-                                                atk, crit, degat, 3, equipeb->tab[adversaire-1].type,elmt);
 
             } else { // Equipe B qui attaque
 
-                procedure_mere_affichage_fight(equipea, equipeb,
-                                                compteur_de_tour,
-                                                &equipeb->tab[i], &equipea->tab[i],
-                                                0, 0, 0, 1, 0,0);
                 do { scanf("%d", &atk); }
                 while (atk < 1 || atk > 4);
 
-                procedure_mere_affichage_fight(equipea, equipeb,
-                                                compteur_de_tour,
-                                                &equipeb->tab[i], &equipea->tab[i],
-                                                atk, 0, 0, 2, 0,0);
                 do { scanf("%d", &adversaire); }
                 while (adversaire < 1 || adversaire > 4);
 
@@ -177,10 +156,6 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de 
                                atk - 1,
                                &crit, &elmt);
                 equipea->tab[adversaire - 1].pv -= degat;
-                procedure_mere_affichage_fight(equipea, equipeb,
-                                                compteur_de_tour,
-                                                &equipeb->tab[i], &equipea->tab[adversaire - 1],
-                                                atk, crit, degat, 3, equipea->tab[adversaire-1].type,elmt);
             }
         }
 

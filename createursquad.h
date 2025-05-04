@@ -1,13 +1,12 @@
-#ifndef CREATEURSQUAD_H
-#define CREATEURSQUAD_H
+#ifndef _CREATEURSQUAD
+#define _CREATEURSQUAD
 #include "head.h"
 #include "personnages.h"
 #include "fight.h"
 #define SQUADASSEMBLEUR 4 //Constante pour le nombre de personnage dans l'équipe
 
 
-Equipe_deux * assembleur_squad_deux(Personnage * tablist, int num);
-Equipe_quatre * assembleur_squad_quatre(Personnage *tablist, int num);
+void Assembleur_equipe(Equipe_quatre *equipea, Personnage *tablist, Game_state *etat, Perso_select *archive_etat, Position pos, SDL_Event e);
 
 
 #endif
