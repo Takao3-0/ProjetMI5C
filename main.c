@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     Equipe_quatre squad1;
+    Equipe_quatre squad2;
     /*squad1.tab[0]= tabPerso[13];
     squad1.tab[1]= tabPerso[14];
     squad1.tab[2]= tabPerso[9];
@@ -27,14 +28,18 @@ int main(int argc, char* argv[]) {
         squad1.tab[1].name, 
         squad1.tab[2].name,
         squad1.tab[3].name);*/
-    //Init de SDL + SDL IMG 
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        fprintf(stderr, "SDL_Init failed: %s\n", SDL_GetError());
+    //Init de SDL + SDL IMG + SDL TTF
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) { //Depuis la documentation de SLD
+        printf("SDL_Init raté: %s\n", SDL_GetError());
         return 1;
     }
-    if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
-        fprintf(stderr, "IMG_Init failed: %s\n", IMG_GetError());
+    if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
+        printf("IMG_Init raté: %s\n", IMG_GetError());
         SDL_Quit();
+        return 1;
+    }
+    if (TTF_Init() != 0) { //Depuis la documentation de SDL
+        printf("TTF_Init raté: %s\n", TTF_GetError());
         return 1;
     }
 
@@ -50,16 +55,19 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    TTF_Font *font = TTF_OpenFont("assets/FUTURA.ttf", 24);
+
     Import_tex(ren);
 
     // état courant
     Game_state etat = MENU;
+    Game_state equipe = E1;
     Perso_select archive_etat = CRIONA;
     Perso_select selection = VIDE;
     Position pos = P1;
 
 
-    // 4) Boucle principale
+    //Boucle principale
     bool running = true;
     SDL_Event e;
     while (running) {
@@ -85,6 +93,8 @@ int main(int argc, char* argv[]) {
                     etat = ARCHIVE;
                 } else if (mx >= btnEQUIPE.x && mx < btnEQUIPE.x + btnEQUIPE.w && my >= btnEQUIPE.y && my < btnEQUIPE.y + btnEQUIPE.h){
                     etat = EQUIPE;
+                } else if (mx >= btn4VS4.x && mx < btn4VS4.x + btn4VS4.w && my >= btn4VS4.y && my < btn4VS4.y + btn4VS4.h){
+                    etat = VERSUS4;
                 }
             } else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && etat == ARCHIVE){
                 if (mx >= btnCROIXarchive.x && mx < btnCROIXarchive.x + btnCROIXarchive.w && my >= btnCROIXarchive.y && my < btnCROIXarchive.y + btnCROIXarchive.h){
@@ -123,17 +133,36 @@ int main(int argc, char* argv[]) {
                 } else if (mx >= btnJeuxP4.x && mx < btnJeuxP4.x + btnJeuxP4.w && my >= btnJeuxP4.y && my < btnJeuxP4.y + btnJeuxP4.h){
                     etat = SELECTION; 
                     pos = P4;
-                } 
+                } else if(mx >= btnEquipechangement.x && mx < btnEquipechangement.x + btnEquipechangement.w && my >= btnEquipechangement.y && my < btnEquipechangement.y + btnEquipechangement.h){
+                    printf("Clic\n");
+                    if (equipe == E1){
+                        equipe = E2;
+                    } else if (equipe == E2){
+                        equipe = E1;
+                    }
+                }
             } else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && etat == SELECTION){
-                Assembleur_equipe(&squad1,tabPerso,&etat,&archive_etat,pos,e);
+                if (equipe == E1){
+                    Assembleur_equipe(&squad1,tabPerso,&etat,&archive_etat,pos,e,&equipe);                    
+                } else if (equipe == E2){
+                    Assembleur_equipe(&squad2,tabPerso,&etat,&archive_etat,pos,e,&equipe);  
+                }
                 selection = archive_etat;
+
+            } else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && etat == VERSUS4 ){
+                fight(&squad1,&squad2);
+
+                
 
             }
         }
 
         //Affichage via la fonction dans le fichier affichage.c
-
-        affichage(ren, archive_etat, etat, selection, squad1);
+        if (equipe == E1){
+            affichage(ren, archive_etat, etat, selection, squad1, equipe,font);                    
+        } else if (equipe == E2){
+            affichage(ren, archive_etat, etat, selection, squad2, equipe,font); 
+        }
 
     }
 }

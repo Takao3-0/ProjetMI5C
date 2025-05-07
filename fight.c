@@ -119,18 +119,18 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de 
     int crit = 0;
     int elmt = 0;              // type élémentaire final
     srand(time(NULL));
-    Equipe_quatre equipe_a; 
-    Equipe_quatre equipe_b;
 
     do {
-        for (int i = 0; i < 4; ++i) {  // 2 personnages par équipe
+        for (int i = 0; i < 4; ++i) {  // 4 personnages par équipe
             if (compteur_de_tour % 2 == 0) { // Equipe A qui attaque
 
-                do { scanf("%d", &atk); }
-                while (atk < 1 || atk > 4);
+                do { 
+                    scanf("%d", &atk); 
+                }while (atk < 1 || atk > 4);
 
-                do { scanf("%d", &adversaire); }
-                while (adversaire < 1 || adversaire > 4);
+                do { 
+                    scanf("%d", &adversaire); 
+                }while (adversaire < 1 || adversaire > 4);
 
                 crit = 0;
                 elmt  = 0;
@@ -143,11 +143,13 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de 
 
             } else { // Equipe B qui attaque
 
-                do { scanf("%d", &atk); }
-                while (atk < 1 || atk > 4);
+                do { 
+                    scanf("%d", &atk); 
+                }while (atk < 1 || atk > 4);
 
-                do { scanf("%d", &adversaire); }
-                while (adversaire < 1 || adversaire > 4);
+                do { 
+                    scanf("%d", &adversaire);
+                }while (adversaire < 1 || adversaire > 4);
 
                 crit = 0;
                 elmt  = 0;
@@ -165,7 +167,7 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb){ //Fonction mère de 
             equipea->tab[0].pv = equipea->tab[1].pv = 0;
         }
         ++compteur_de_tour;
-    } while ((verification(equipe_a)!= 4 || verification(equipe_b)!=4));
+    } while ((verification(*equipea)!= 4 || verification(*equipeb)!=4));
 }
 
 

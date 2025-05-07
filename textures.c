@@ -5,6 +5,8 @@ SDL_Texture *screenMenu   = NULL;
 SDL_Texture *screenPlay   = NULL;
 SDL_Texture *screenEquipe = NULL;
 SDL_Texture *vide         = NULL;
+SDL_Texture *screenEquipe1 = NULL;
+SDL_Texture *screenEquipe2 = NULL;
 
 // personnages
 SDL_Texture *Criona    = NULL;
@@ -28,7 +30,7 @@ SDL_Texture *archiveNova      = NULL;
 SDL_Texture *archiveTerrorex  = NULL;
 SDL_Texture *archiveAqualis   = NULL;
 
-// “Add” textures
+// Add textures
 SDL_Texture *AddCriona    = NULL;
 SDL_Texture *AddVoltix    = NULL;
 SDL_Texture *AddGlacius   = NULL;
@@ -39,7 +41,14 @@ SDL_Texture *AddNova      = NULL;
 SDL_Texture *AddTerrorex  = NULL;
 SDL_Texture *AddAqualis   = NULL;
 
-// — implémentation du loader — 
+// Fight
+
+SDL_Texture *Fight = NULL;
+SDL_Texture *HP = NULL;
+
+//
+
+// implémentation du chargeur d'img
 SDL_Texture* LoadTexture(SDL_Renderer *renderer, const char *filePath) {
     SDL_Texture *tex = IMG_LoadTexture(renderer, filePath);
     if (!tex) {
@@ -54,6 +63,9 @@ void Import_tex(SDL_Renderer *ren){
     screenMenu   = LoadTexture(ren, "assets/Fondfinal.png");
     screenPlay   = LoadTexture(ren, "assets/fondmenuv2.png");
     screenEquipe = LoadTexture(ren, "assets/Equipe.png");
+    screenEquipe1 = LoadTexture(ren, "assets/Equipe1.png");
+    screenEquipe2 = LoadTexture(ren, "assets/Equipe2.png");
+
 
     Criona    = LoadTexture(ren, "assets/CrionaPNG.png");
     Arcaniste = LoadTexture(ren, "assets/ArcanistePNG.png");
@@ -84,4 +96,10 @@ void Import_tex(SDL_Renderer *ren){
     AddNova      = LoadTexture(ren, "assets/AddNova.png");
     AddTerrorex  = LoadTexture(ren, "assets/AddTerrorex.png");
     AddAqualis   = LoadTexture(ren, "assets/AddAqualis.png");
+
+    //Pour le fight
+
+    Fight        = LoadTexture(ren, "assets/Fight.png");
+    HP = LoadTexture(ren, "assets/Barrehp.png");
+
 }

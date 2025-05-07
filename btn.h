@@ -10,6 +10,7 @@ extern SDL_Rect btnQUITTER;
 extern SDL_Rect btnArchive;
 extern SDL_Rect btnBACK1;
 extern SDL_Rect btnEQUIPE;
+extern SDL_Rect btn4VS4;
 
 // Menu jeux archive
 extern SDL_Rect btnCROIXarchive;
@@ -33,6 +34,7 @@ extern SDL_Rect btnJeuxP4;
 
 // Menu sélection personnage
 extern SDL_Rect btnAdd;
+extern SDL_Rect btnEquipechangement;
 extern SDL_Rect btnCROIXselection;
 extern SDL_Rect btnSelectionCriona;
 extern SDL_Rect btnSelectionGlacius;

@@ -13,6 +13,9 @@
 #include <SDL2/SDL_main.h>
 #include <SDL2/SDL_image.h>
 
+#include <SDL2/SDL_ttf.h>
+
+
 //Importation des couleurs 
 
 #define ROUGE "\033[31m"
@@ -36,6 +39,7 @@
 #define VIOLET_CLAIR2      "\x1b[38;5;141m"
 #define VIOLET_TRES_CLAIR    "\x1b[38;5;183m"
 
+
 //Etat de jeux
 typedef enum {
     MENU,   // écran de base
@@ -44,6 +48,9 @@ typedef enum {
     ARCHIVE,
     EQUIPE,
     SELECTION,
+    E1,
+    E2,
+    VERSUS4,
 } Game_state;
 
 typedef enum {

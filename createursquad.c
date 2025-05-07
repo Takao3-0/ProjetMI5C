@@ -69,7 +69,7 @@ void affichage_e(Perso_select select){
     }
 }
 
-void Assembleur_equipe(Equipe_quatre *equipea,Personnage *tablist, Game_state *etat, Perso_select *archive_etat, Position pos, SDL_Event e){
+void Assembleur_equipe(Equipe_quatre *equipea,Personnage *tablist, Game_state *etat, Perso_select *archive_etat, Position pos, SDL_Event e, Game_state *equipe){
     int mx = e.button.x;
     int my = e.button.y;
     Perso_select selection = VIDE;
@@ -93,13 +93,18 @@ void Assembleur_equipe(Equipe_quatre *equipea,Personnage *tablist, Game_state *e
         *archive_etat = VOLTIX;    
     } else if (mx >= btnArchiveNova.x && mx < btnArchiveNova.x + btnArchiveNova.w && my >= btnArchiveNova.y && my < btnArchiveNova.y + btnArchiveNova.h){
         *archive_etat = NOVA;    
-    } else if (mx >= btnAdd.x && mx < btnAdd.x + btnAdd.w && my >= btnAdd.y && my < btnAdd.y + btnAdd.h){
+    }  else if (mx >= btnAdd.x && mx < btnAdd.x + btnAdd.w && my >= btnAdd.y && my < btnAdd.y + btnAdd.h){
         selection = *archive_etat;
         affichage_e(selection);
         switch (pos){
             case P1:
                 id(selection, equipea, pos, tablist);
                 printf("Personnage en P1 : %s\n", equipea->tab[0].name);
+                if (*equipe == E1){
+                    printf("Equipe 1\n");
+                } else {
+                    printf("Equipe 2\n");
+                }
                 equipea->tab[3].pos = 0;
                 break;
             case P2:

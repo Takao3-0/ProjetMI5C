@@ -8,6 +8,8 @@ extern SDL_Texture *screenMenu;
 extern SDL_Texture *screenPlay;
 extern SDL_Texture *screenEquipe;
 extern SDL_Texture *vide;
+extern SDL_Texture *screenEquipe1;
+extern SDL_Texture *screenEquipe2;
 
 //Chargement personnages en png
 extern SDL_Texture *Criona;
@@ -41,6 +43,10 @@ extern SDL_Texture *AddCalyra;
 extern SDL_Texture *AddNova;
 extern SDL_Texture *AddTerrorex;
 extern SDL_Texture *AddAqualis;
+
+
+extern SDL_Texture *Fight;
+extern SDL_Texture *HP;
 
 SDL_Texture* LoadTexture(SDL_Renderer *renderer, const char *filePath);
 void Import_tex(SDL_Renderer *ren);

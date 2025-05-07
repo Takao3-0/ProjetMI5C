@@ -9,6 +9,7 @@
     SDL_Rect btnArchive = { .x = 138, .y = 257, .w = 108, .h = 98 };
     SDL_Rect btnBACK1 = { .x = 1259, .y = 662, .w = 73, .h = 70 };
     SDL_Rect btnEQUIPE = { .x = 254, .y = 257, .w = 108, .h = 95 };
+    SDL_Rect btn4VS4 = { .x = 371, .y = 257, .w = 108, .h = 95 };
 
     //Menu jeux archive :
 
@@ -36,6 +37,7 @@
     //Menu selection personnage
 
     SDL_Rect btnAdd = { .x = 51, .y = 693, .w = 198, .h = 54 };
+    SDL_Rect btnEquipechangement = { .x = 1160, .y = 16, .w = 125, .h = 38 };
     SDL_Rect btnCROIXselection = { .x = 1302, .y = 15, .w = 37, .h = 37 };
     SDL_Rect btnSelectionCriona = { .x = 14, .y = 128, .w = 95, .h = 121 };
     SDL_Rect btnSelectionGlacius = { .x = 126, .y = 128, .w = 95, .h = 121 };
@@ -47,3 +49,5 @@
     SDL_Rect btnSelectionArcaniste = { .x = 14, .y = 522, .w = 95, .h = 121 };
     SDL_Rect btnSelectionVoltix = { .x = 126, .y = 522, .w = 95, .h = 121 };
     SDL_Rect btnSelectionNova = { .x = 237, .y = 522, .w = 95, .h = 121 };
+
+    //Menu 4v4
