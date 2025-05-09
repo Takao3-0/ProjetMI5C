@@ -43,7 +43,7 @@ void squad_affichage(SDL_Renderer *ren, Equipe_quatre equipe, Slot *slots){
                 SDL_RenderCopy(ren, Vulcain, NULL, &dst4); 
                 break;
             case AQUALIS:
-                SDL_QueryTexture(Calyra, NULL, NULL, &w, &h);
+                SDL_QueryTexture(Aqualis, NULL, NULL, &w, &h);
         
 
                 SDL_Rect dst5 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
@@ -90,20 +90,23 @@ void barrehp(SDL_Renderer *ren, Equipe_quatre equipe){
         { .x =  1040, .y = 59, .w = 160, .h = 30},
     };
     for (int i=0; i<4; i++){
-        int w;
-        SDL_Rect pos = { .x = slotbarrehp[i].x, .y = slotbarrehp[i].y, .w = 150*(equipe.tab[i].pv/equipe.tab[i].pvmax), .h = 30 };
+        float pvm = equipe.tab[i].pvmax;
+        float pv = equipe.tab[i].pv;
+        float coef = 150*(pv/pvm);
+        int ww = coef; 
+        SDL_Rect pos = { .x = slotbarrehp[i].x, .y = slotbarrehp[i].y, .w = ww, .h = 30 };
         SDL_RenderCopy(ren, HP, NULL, &pos);
         
     }
 }
 
 void convert_texte(const char *texte, TTF_Font *font, SDL_Renderer *ren, int x, int y){
-    SDL_Color BLANC = {255,255,255,255};
+    SDL_Color BLANC = {0,0,0,255};
     SDL_Surface *surface = TTF_RenderText_Solid(font, texte, BLANC);
     SDL_Texture *le_texte = SDL_CreateTextureFromSurface(ren, surface);
     SDL_FreeSurface(surface);
     SDL_Rect position;
-    position.x = x;  // position a l’écran
+    position.x = x;
     position.y = y;
     SDL_QueryTexture(le_texte, NULL, NULL, &position.w, &position.h);
     SDL_RenderCopy(ren, le_texte, NULL, &position);
@@ -119,32 +122,37 @@ int verificationcomplete(Equipe_quatre equipe){
 
 }
 
+void affichage_attaque(Personnage attaquant, SDL_Renderer *ren, TTF_Font *font){
+    Slot attaques[4] = {
+        { .x = 104, .y = 529, .w = 240, .h = 107 },
+        { .x = 372, .y = 529, .w = 240, .h = 107 },
+        { .x = 104, .y = 640, .w = 240, .h = 107 },
+        { .x = 372, .y = 640, .w = 240, .h = 107 },
+    }; 
+    for (int i=0; i<4; i++){ //4 attaques c'est pour ça
+        convert_texte(attaquant.listedescapacites[i].nom, font, ren, attaques[i].x, attaques[i].y );
+    }
+    SDL_RenderPresent(ren);
+}
 
 
-void affichage(SDL_Renderer *ren, Perso_select archive_etat, Game_state etat, Perso_select selection, Equipe_quatre equipea, Game_state equipe, TTF_Font *font){
+
+void affichage(SDL_Renderer *ren, Perso_select archive_etat, Game_state * etat, Perso_select selection, Equipe_quatre equipea, Game_state equipe, TTF_Font *font){
     Slot slotscreate[4] = {
         { .x =  30, .y = 110, .w = 0, .h = 0},
         { .x = 320, .y = 50, .w = 0, .h = 0},
         { .x =  680, .y = 50, .w = 0, .h = 0},
         { .x = 1000, .y = 110, .w = 0, .h = 0},
     };
-    Slot slotsfight[4] = {
-        { .x =  30, .y = 110, .w = 0, .h = 0},
-        { .x = 320, .y = 50, .w = 0, .h = 0},
-        { .x =  680, .y = 50, .w = 0, .h = 0},
-        { .x = 1000, .y = 110, .w = 0, .h = 0},
-    };
-    
     SDL_RenderClear(ren); //On efface tout
     SDL_Color BLANC = {255,255,255,255};
     int a = 0;
-    switch (etat) {
+    switch (*etat) {
         case MENU:
             SDL_RenderCopy(ren, screenMenu, NULL, NULL);
             break;
         case MENUP:
             SDL_RenderCopy(ren, screenPlay, NULL, NULL);
-            convert_texte("Bite",font,ren,100,100);
             break;
         case EQUIPE:
             if (equipe == E1){
@@ -156,18 +164,6 @@ void affichage(SDL_Renderer *ren, Perso_select archive_etat, Game_state etat, Pe
             }
             squad_affichage(ren,equipea,slotscreate);
             break;
-        case VERSUS4:
-        a = verificationcomplete(equipea);
-            if (a == 1 ){
-                SDL_RenderCopy(ren, screenPlay, NULL, NULL);  
-                convert_texte("Impossible de lancer le combat en raison d'equipe manquante.",font,ren,350,100);
-                break;       
-            } else {
-                SDL_RenderCopy(ren, Fight, NULL, NULL);
-                squad_affichage(ren,equipea,slotsfight);
-                barrehp(ren,equipea);
-                break;
-            }
         case ARCHIVE:
             switch (archive_etat){
                 case CRIONA:
@@ -236,9 +232,114 @@ void affichage(SDL_Renderer *ren, Perso_select archive_etat, Game_state etat, Pe
 
 
     SDL_RenderPresent(ren);
-    SDL_Delay(16);
-    /*if (a==1){
-        a=0;
-        affichage(ren, archive_etat, MENUP, selection, equipea, equipe,font);
-    }*/
+    SDL_Delay(20);
+    if (a==1){
+        SDL_Delay(1000);
+    }
+
+}
+
+void squad_affichage_fight(SDL_Renderer *ren, Equipe_quatre equipe, Slot *slots){
+    for (int i=0; i<4; i++){
+        switch (equipe.tab[i].NOM){
+            int w, h;
+            case CRIONA:
+                SDL_QueryTexture(CrionaF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst0 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, CrionaF, NULL, &dst0);  
+                break;
+            case GLACIUS:
+                SDL_QueryTexture(GlaciusF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst1 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, GlaciusF, NULL, &dst1); 
+                break; 
+            case ARCANISTE:
+                SDL_QueryTexture(ArcanisteF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst2 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, ArcanisteF, NULL, &dst2); 
+                break;
+            case CALYRA:
+                SDL_QueryTexture(CalyraF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst3 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, CalyraF, NULL, &dst3); 
+                break;  
+            case VULCAIN:
+                SDL_QueryTexture(VulcainF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst4 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, VulcainF, NULL, &dst4); 
+                break;
+            case AQUALIS:
+                SDL_QueryTexture(AqualisF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst5 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, AqualisF, NULL, &dst5); 
+                break;
+            case NOVA:
+                SDL_QueryTexture(NovaF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst6 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, NovaF, NULL, &dst6); 
+                break;
+            case TERROREX:
+                SDL_QueryTexture(TerrorexF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst7 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, TerrorexF, NULL, &dst7); 
+                break;
+            case VOLTIX:
+                SDL_QueryTexture(VoltixF, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst8 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+                SDL_RenderCopy(ren, VoltixF, NULL, &dst8); 
+                break;
+            case VIDE:
+                SDL_QueryTexture(vide, NULL, NULL, &w, &h);
+        
+
+                SDL_Rect dst9 = { .x = slots[i].x, .y = slots[i].y, .w = 400, .h = 590 };
+                SDL_RenderCopy(ren, vide, NULL, &dst9); 
+
+        }        
+    }
+
+}
+
+void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Equipe_quatre def, Game_state equipe, TTF_Font *font, Personnage attaquant, int tour){
+    SDL_RenderClear(ren); //On efface tout 
+    Slot slotsfight[4] = {
+        { .x =  260, .y = 50, .w = 0, .h = 0},
+        { .x = 500, .y = 20, .w = 0, .h = 0},
+        { .x =  750, .y = 20, .w = 0, .h = 0},
+        { .x = 1000, .y = 50, .w = 0, .h = 0},
+    };
+    int a = verificationcomplete(atk);
+    if (a == 1 ){
+        SDL_RenderCopy(ren, screenPlay, NULL, NULL);  
+        convert_texte("Impossible de lancer le combat en raison d'equipe manquante.",font,ren,350,100);
+        printf("Erreur\n");
+        *etat = MENUP;    
+    } else {
+        SDL_RenderCopy(ren, Fight, NULL, NULL);
+        squad_affichage_fight(ren,def,slotsfight);
+        barrehp(ren,def);
+        char msg[64];
+        snprintf(msg, sizeof(msg), "Tour numero %d", tour+1);
+        convert_texte(msg,font,ren,1000,700);
+        affichage_attaque(attaquant,ren,font);
+        SDL_RenderPresent(ren);
+    }   
 }

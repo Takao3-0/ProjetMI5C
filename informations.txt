@@ -63,14 +63,14 @@ Informations concernant le personnages.txt
 
 Exemple de saisie d'un personnage;
 
-Nom;pv;pvmax;atk;def;tc;dc
+Nom;pv;pvmax;atk;def;tc;dc;rareté
 Nom_de_la_capacité;Description_de_la_capacité;damage;type;cd  //*4 pour les 4 capa 
 
-Dracaufeu;1000;1000;50;15;75;150
-Coup de feu;Inflige des brulures;30;2;2
-Lance flamme;Crache du feu;50;2;4
-Récupération;Soin moyen;125;2;3
-Déflagration;Attaque puissante;160;2;5  //corrspond à l'ultime (la capacite spéciale)
+Dracaufeu;1000;1000;50;15;75;150;5
+Coup de feu;Inflige des brulures;30;10;2
+Lance flamme;Crache du feu;50;10;4
+Récupération;Soin moyen;125;10;3
+Déflagration;Attaque puissante;160;10;5  //corrspond à l'ultime (la capacite spéciale)
 
 ------------------------------------------------------------
 
@@ -115,6 +115,5 @@ Ps : Les couleurs disponibles pour l'instant sont dans le fichier "head.h"
 Les artéfacts;
     Features importante qui vont compléxifier les combats en ajoutant un aspect stratégique suplémentaire
 
-│  ┌────────────────────────────────┐  ┌────────────────────────────────┐  ┌────────────────────────────────┐  ┌────────────────────────────────┐  │
 
     

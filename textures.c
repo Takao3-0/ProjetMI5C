@@ -43,9 +43,17 @@ SDL_Texture *AddAqualis   = NULL;
 
 // Fight
 
-SDL_Texture *Fight = NULL;
-SDL_Texture *HP = NULL;
-
+SDL_Texture *Fight        = NULL;
+SDL_Texture *HP           = NULL;
+SDL_Texture *CrionaF      = NULL;
+SDL_Texture *VoltixF      = NULL;
+SDL_Texture *GlaciusF     = NULL;
+SDL_Texture *TerrorexF    = NULL;
+SDL_Texture *AqualisF     = NULL;
+SDL_Texture *NovaF        = NULL;
+SDL_Texture *CalyraF      = NULL;
+SDL_Texture *VulcainF     = NULL;
+SDL_Texture *ArcanisteF   = NULL;
 //
 
 // implémentation du chargeur d'img
@@ -100,6 +108,16 @@ void Import_tex(SDL_Renderer *ren){
     //Pour le fight
 
     Fight        = LoadTexture(ren, "assets/Fight.png");
-    HP = LoadTexture(ren, "assets/Barrehp.png");
+    HP           = LoadTexture(ren, "assets/Barrehp.png");
+    CrionaF      = LoadTexture(ren, "assets/CrionaF.png");
+    VoltixF      = LoadTexture(ren, "assets/VoltixF.png");
+    GlaciusF     = LoadTexture(ren, "assets/GlaciusF.png");
+    TerrorexF    = LoadTexture(ren, "assets/TerrorexF.png");
+    AqualisF     = LoadTexture(ren, "assets/AqualisF.png");
+    NovaF        = LoadTexture(ren, "assets/NovaF.png");
+    CalyraF      = LoadTexture(ren, "assets/CalyraF.png");
+    VulcainF     = LoadTexture(ren, "assets/VulcainF.png");
+    ArcanisteF   = LoadTexture(ren, "assets/ArcanisteF.png");
+
 
 }

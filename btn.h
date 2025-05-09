@@ -48,4 +48,16 @@ extern SDL_Rect btnSelectionVoltix;
 extern SDL_Rect btnSelectionNova;
 
 
+//Btn de selection d'attaque
+
+extern SDL_Rect btnA1;
+extern SDL_Rect btnA2;
+extern SDL_Rect btnA3;
+extern SDL_Rect btnA4;
+extern SDL_Rect Cible1;
+extern SDL_Rect Cible2;
+extern SDL_Rect Cible3;
+extern SDL_Rect Cible4;
+
+
 #endif

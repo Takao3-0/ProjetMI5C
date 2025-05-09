@@ -51,3 +51,12 @@
     SDL_Rect btnSelectionNova = { .x = 237, .y = 522, .w = 95, .h = 121 };
 
     //Menu 4v4
+
+    SDL_Rect btnA1  = { .x = 104, .y = 529, .w = 240, .h = 107 };
+    SDL_Rect btnA2  = { .x = 372, .y = 529, .w = 240, .h = 107 };
+    SDL_Rect btnA3  = { .x = 104, .y = 640, .w = 240, .h = 107 };
+    SDL_Rect btnA4  = { .x = 372, .y = 640, .w = 240, .h = 107 };
+    SDL_Rect Cible1 = { .x = 267, .y = 353, .w = 205, .h = 30 };
+    SDL_Rect Cible2 = { .x = 523, .y = 323, .w = 205, .h = 30 };
+    SDL_Rect Cible3 = { .x = 763, .y = 321, .w = 205, .h = 30 };
+    SDL_Rect Cible4 = { .x = 1016, .y = 353, .w = 205, .h = 30 };

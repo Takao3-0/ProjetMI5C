@@ -47,6 +47,15 @@ extern SDL_Texture *AddAqualis;
 
 extern SDL_Texture *Fight;
 extern SDL_Texture *HP;
+extern SDL_Texture *CrionaF;  
+extern SDL_Texture *VoltixF;  
+extern SDL_Texture *GlaciusF;   
+extern SDL_Texture *TerrorexF; 
+extern SDL_Texture *AqualisF;
+extern SDL_Texture *NovaF;
+extern SDL_Texture *CalyraF;
+extern SDL_Texture *VulcainF;
+extern SDL_Texture *ArcanisteF;
 
 SDL_Texture* LoadTexture(SDL_Renderer *renderer, const char *filePath);
 void Import_tex(SDL_Renderer *ren);

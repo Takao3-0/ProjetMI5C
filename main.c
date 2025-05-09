@@ -17,13 +17,18 @@ int main(int argc, char* argv[]) {
         printf("Erreur lors de l'extraction des personnages.\n");
         return 1;
     }
+    srand(time(NULL));
     Equipe_quatre squad1;
     Equipe_quatre squad2;
-    /*squad1.tab[0]= tabPerso[13];
+    squad1.tab[0]= tabPerso[13];
     squad1.tab[1]= tabPerso[14];
     squad1.tab[2]= tabPerso[9];
     squad1.tab[3]= tabPerso[4];
-    printf(VERT"L'equipe est composé de : %s %s %s %s\n"RESET,
+    squad2.tab[0]= tabPerso[13];
+    squad2.tab[1]= tabPerso[8];
+    squad2.tab[2]= tabPerso[3];
+    squad2.tab[3]= tabPerso[5];
+    /*printf(VERT"L'equipe est composé de : %s %s %s %s\n"RESET,
         squad1.tab[0].name,
         squad1.tab[1].name, 
         squad1.tab[2].name,
@@ -142,6 +147,7 @@ int main(int argc, char* argv[]) {
                     }
                 }
             } else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && etat == SELECTION){
+                printf("Passage dans le menu de création d'équipe\n");
                 if (equipe == E1){
                     Assembleur_equipe(&squad1,tabPerso,&etat,&archive_etat,pos,e,&equipe);                    
                 } else if (equipe == E2){
@@ -150,18 +156,18 @@ int main(int argc, char* argv[]) {
                 selection = archive_etat;
 
             } else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && etat == VERSUS4 ){
-                fight(&squad1,&squad2);
-
-                
+                equipe = E1;
+                printf("Passage en fight\n");
+                fight(&squad1,&squad2, ren, archive_etat, &etat, selection, equipe, font);
 
             }
         }
 
         //Affichage via la fonction dans le fichier affichage.c
         if (equipe == E1){
-            affichage(ren, archive_etat, etat, selection, squad1, equipe,font);                    
+            affichage(ren, archive_etat, &etat, selection, squad1, equipe,font);                    
         } else if (equipe == E2){
-            affichage(ren, archive_etat, etat, selection, squad2, equipe,font); 
+            affichage(ren, archive_etat, &etat, selection, squad2, equipe,font); 
         }
 
     }

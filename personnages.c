@@ -45,13 +45,15 @@ Personnage * extract(){
                 &perso.dc,
                 &perso.rarete);
             printf(ROUGE"Nom recupere : %s\n"RESET, perso.name);  //à terme ces printfs disparaiterons.
+            perso.type = 0;
             /*printf("PV Actuels : %d\n", perso.pv); 
             printf("Pv maximum : %d\n", perso.pvmax); 
             printf("Attaque de base : %d\n", perso.atk); 
             printf("Defence : %d\n", perso.def); 
             printf("Taux critique : %d\n", perso.tc); 
-            printf("Degats critique : %d\n", perso.dc);
-            printf("Rarete du personnage %d etoiles\n", perso.rarete);*/
+            printf("Degats critique : %d\n", perso.dc);*/
+            //printf("Personnage %s affecté par le type %d\n", perso.name,perso.type);
+            //printf("Rarete du personnage %d etoiles\n", perso.rarete);
             for (int j=0;j<4;j++){
                 fgets(chaine,60,fic);
                 //printf(VIOLET"%s\n"RESET,chaine);
