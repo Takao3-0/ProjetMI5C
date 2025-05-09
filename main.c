@@ -2,7 +2,6 @@
 #include "personnages.h"
 #include "fight.h"
 #include "createursquad.h"
-#include "key.h"
 #include "weapons.h"
 #include "btn.h"
 #include "textures.h"
