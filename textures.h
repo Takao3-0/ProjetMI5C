@@ -38,6 +38,12 @@ extern SDL_Texture *archiveCalyra;
 extern SDL_Texture *archiveNova;
 extern SDL_Texture *archiveTerrorex;
 extern SDL_Texture *archiveAqualis;
+extern SDL_Texture *archiveAquanova;
+extern SDL_Texture *archiveVoltazor;
+extern SDL_Texture *archiveEmbera;
+extern SDL_Texture *archiveKaelen;
+extern SDL_Texture *archivePyrobane;
+extern SDL_Texture *archiveHydragon;
 
 //Chargement des textures de chargement
 extern SDL_Texture *AddCriona;

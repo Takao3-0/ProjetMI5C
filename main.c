@@ -121,6 +121,18 @@ int main(int argc, char* argv[]) {
                     archive_etat = VOLTIX;    
                 } else if (mx >= btnArchiveNova.x && mx < btnArchiveNova.x + btnArchiveNova.w && my >= btnArchiveNova.y && my < btnArchiveNova.y + btnArchiveNova.h){
                     archive_etat = NOVA;    
+                } else if (mx >= btnArchiveAquanova.x && mx < btnArchiveAquanova.x + btnArchiveAquanova.w && my >= btnArchiveAquanova.y && my < btnArchiveAquanova.y + btnArchiveAquanova.h) {
+                    archive_etat = AQUANOVA;
+                } else if (mx >= btnArchiveVoltazor.x && mx < btnArchiveVoltazor.x + btnArchiveVoltazor.w && my >= btnArchiveVoltazor.y && my < btnArchiveVoltazor.y + btnArchiveVoltazor.h) {
+                    archive_etat = VOLTAZOR;
+                } else if (mx >= btnArchiveEmbera.x && mx < btnArchiveEmbera.x + btnArchiveEmbera.w && my >= btnArchiveEmbera.y && my < btnArchiveEmbera.y + btnArchiveEmbera.h) {
+                    archive_etat = EMBERA;
+                } else if (mx >= btnArchiveKaelen.x && mx < btnArchiveKaelen.x + btnArchiveKaelen.w && my >= btnArchiveKaelen.y && my < btnArchiveKaelen.y + btnArchiveKaelen.h) {
+                    archive_etat = KAELEN;
+                } else if (mx >= btnArchivePyrobane.x && mx < btnArchivePyrobane.x + btnArchivePyrobane.w && my >= btnArchivePyrobane.y && my < btnArchivePyrobane.y + btnArchivePyrobane.h) {
+                    archive_etat = PYROBANE;
+                }else if (mx >= btnArchiveHydragon.x && mx < btnArchiveHydragon.x + btnArchiveHydragon.w && my >= btnArchiveHydragon.y && my < btnArchiveHydragon.y + btnArchiveHydragon.h) {
+                    archive_etat = HYDRAGON;
                 }
             } else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && etat == EQUIPE){ //Quand on est dans le menu Equipe
                 if(mx >= btnCROIXjeux.x && mx < btnCROIXjeux.x + btnCROIXjeux.w && my >= btnCROIXjeux.y && my < btnCROIXjeux.y + btnCROIXjeux.h){
@@ -170,6 +182,7 @@ int main(int argc, char* argv[]) {
         }
         if (etat == VERSUS4){ //On appel la fonction fight ici parce qu'elle gère elle même son affichage. Dans le cas ou on l'appel plus haut on a un écran noir le temps d'un clic.
            fight(&squad1,&squad2, ren, archive_etat, &etat, selection, equipe, font); 
+           etat = MENUP;
         }
 
     }

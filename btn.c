@@ -17,13 +17,18 @@
     SDL_Rect btnArchiveCriona = { .x = 14, .y = 128, .w = 95, .h = 121 };
     SDL_Rect btnArchiveGlacius = { .x = 126, .y = 128, .w = 95, .h = 121 };
     SDL_Rect btnArchiveTerrorex = { .x = 237, .y = 128, .w = 95, .h = 121 };
-    SDL_Rect btnArchiveKaelen = { .x = 300, .y = 128, .w = 95, .h = 121 }; //Pas encore d'asset pour Kaelen 
     SDL_Rect btnArchiveVulcain = { .x = 14, .y = 264, .w = 95, .h = 121 };
     SDL_Rect btnArchiveCalyra = { .x = 126, .y = 264, .w = 95, .h = 121 };
     SDL_Rect btnArchiveAqualis = { .x = 14, .y = 391, .w = 95, .h = 121 };
     SDL_Rect btnArchiveArcaniste = { .x = 14, .y = 522, .w = 95, .h = 121 };
     SDL_Rect btnArchiveVoltix = { .x = 126, .y = 522, .w = 95, .h = 121 };
     SDL_Rect btnArchiveNova = { .x = 237, .y = 522, .w = 95, .h = 121 };
+    SDL_Rect btnArchiveAquanova = { .x = 126, .y = 391, .w = 95, .h = 121 };
+    SDL_Rect btnArchiveKaelen = { .x = 350, .y = 128, .w = 95, .h = 121 };
+    SDL_Rect btnArchivePyrobane = { .x = 239, .y = 265, .w = 95, .h = 121 };
+    SDL_Rect btnArchiveEmbera = { .x = 351, .y = 265, .w = 95, .h = 121 };
+    SDL_Rect btnArchiveHydragon = { .x = 239, .y = 391, .w = 95, .h = 121 };
+    SDL_Rect btnArchiveVoltazor = { .x = 350, .y = 526, .w = 95, .h = 121 };
 
     //Menu jeux equipe : 
 

@@ -103,6 +103,13 @@ void resetpv(Equipe_quatre *equipe){
     }
 }
 
+bool adversaire_valide(Personnage defenseur){ //L'adversaire est valide si ses PV sont > 0
+    if (defenseur.pv <= 0){
+       return false; 
+    }
+    return true;
+}
+
 
 
 // Boucle principale de combat entre deux équipes de deux personnages
@@ -124,7 +131,8 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
             int my = e.button.y;
             if (e.type == SDL_QUIT || *etat == MENUP) {
                 fightrunning = false;
-                *etat = MENUP;
+                resetpv(equipea);
+                resetpv(equipeb);
                 break;
             }
             if (compteur_de_tour % 2 == 0) { // Equipe A qui attaque
@@ -222,62 +230,74 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
                         }                  
                     } 
             }
+            if (fight_etat == Slt_Fight){
+                bool rtn;
+                if (equipe == E1){
+                    rtn = adversaire_valide(equipeb->tab[adversaire]);
+                } else {
+                    rtn = adversaire_valide(equipea->tab[adversaire]);
+                } 
+                if (rtn != true){
+                    fight_etat = Slt_Adversaire;
+                    event = EVT_Invalide;
+                }             
+            }
 
-        switch (fight_etat){
-            case Slt_atk:
-                if (equipe == E1){
-                    event = EVT_Vide;
-                    affichage_fight(ren,etat,*equipea,*equipeb,equipe,font,equipea->tab[i],equipeb->tab[0],compteur_de_tour,atk,adversaire,&event,0);    
-                } else {
-                    event = EVT_Vide;
-                    affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[0],compteur_de_tour,atk,adversaire,&event,0);                    
-                }
-                break;
-            case Slt_Adversaire:
-                if (equipe == E1){
-                    affichage_fight(ren,etat,*equipea,*equipeb,equipe,font,equipea->tab[i],equipeb->tab[atk],compteur_de_tour,atk,adversaire,&event,0);                    
-                } else {
-                    affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[atk],compteur_de_tour,atk,adversaire,&event,0);                    
-                }
-                break;
-            case Slt_Fight:
-                crit = 0, elmt  = 0;
-                switch (equipe){
-                    case E1: //E1 attaque E2 reçoit les dmgs
-                        degat = damage(equipea->tab[i],&equipeb->tab[adversaire],atk,&crit, &elmt);
-                        equipeb->tab[adversaire].pv -= degat;
-                        printf(ROUGE"Les pv de %s sont alors de %d\n"RESET,equipeb->tab[adversaire].name, equipeb->tab[adversaire].pv);
-                        break;
-                    case E2: //E2 attaque E1 reçoit les dmgs
-                        degat = damage(equipeb->tab[i],&equipea->tab[adversaire],atk,&crit, &elmt);
-                        equipea->tab[adversaire].pv -= degat;
-                        printf(ROUGE"Les pv de %s sont alors de %d\n"RESET,equipea->tab[adversaire].name, equipea->tab[adversaire].pv);
-                        break;
-                }
-                if (equipe == E1){
-                    event = EVT_Recap;
-                    affichage_fight(ren,etat,*equipea,*equipeb,equipe,font,equipea->tab[i],equipeb->tab[adversaire],compteur_de_tour,atk,adversaire,&event,degat);                    
-                } else {
-                    event = EVT_Recap;
-                    affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[adversaire],compteur_de_tour,atk,adversaire,&event,degat);                    
-                }
-                if (i==3){
-                    i=0;
-                    compteur_de_tour ++;
-                }else { 
-                    i++;
-                };    
-                fight_etat = Slt_atk;
-                break; 
-        } 
-        if (verification(*equipea) <= 0 || verification(*equipeb) <= 0 ){
-            fightrunning = false;
-            resetpv(equipea);
-            resetpv(equipeb);
-
+            switch (fight_etat){
+                case Slt_atk:
+                    if (equipe == E1){
+                        event = EVT_Vide;
+                        affichage_fight(ren,etat,*equipea,*equipeb,equipe,font,equipea->tab[i],equipeb->tab[0],compteur_de_tour,atk,adversaire,&event,0,crit,0);    
+                    } else {
+                        event = EVT_Vide;
+                        affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[0],compteur_de_tour,atk,adversaire,&event,0,crit,0);                    
+                    }
+                    break;
+                case Slt_Adversaire:
+                    if (equipe == E1){
+                        affichage_fight(ren,etat,*equipea,*equipeb,equipe,font,equipea->tab[i],equipeb->tab[atk],compteur_de_tour,atk,adversaire,&event,0,crit,0);                    
+                    } else {
+                        affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[atk],compteur_de_tour,atk,adversaire,&event,0,crit,0);                    
+                    }
+                    break;
+                case Slt_Fight:
+                    crit = 0, elmt  = 0;
+                    switch (equipe){
+                        case E1: //E1 attaque E2 reçoit les dmgs
+                            degat = damage(equipea->tab[i],&equipeb->tab[adversaire],atk,&crit, &elmt);
+                            equipeb->tab[adversaire].pv -= degat;
+                            printf(ROUGE"Les pv de %s sont alors de %d\n"RESET,equipeb->tab[adversaire].name, equipeb->tab[adversaire].pv);
+                            break;
+                        case E2: //E2 attaque E1 reçoit les dmgs
+                            degat = damage(equipeb->tab[i],&equipea->tab[adversaire],atk,&crit, &elmt);
+                            equipea->tab[adversaire].pv -= degat;
+                            printf(ROUGE"Les pv de %s sont alors de %d\n"RESET,equipea->tab[adversaire].name, equipea->tab[adversaire].pv);
+                            break;
+                    }
+                    if (equipe == E1){
+                        event = EVT_Recap;
+                        affichage_fight(ren,etat,*equipea,*equipeb,equipe,font,equipea->tab[i],equipeb->tab[adversaire],compteur_de_tour,atk,adversaire,&event,degat,crit,elmt);                    
+                    } else {
+                        event = EVT_Recap;
+                        affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[adversaire],compteur_de_tour,atk,adversaire,&event,degat,crit,elmt);                    
+                    }
+                    if (i==3){
+                        i=0;
+                        compteur_de_tour ++;
+                    }else { 
+                        i++;
+                    };    
+                    fight_etat = Slt_atk;
+                    break; 
+            } 
+            if (verification(*equipea) <= 0 || verification(*equipeb) <= 0 ){
+                fightrunning = false;
+                resetpv(equipea);
+                resetpv(equipeb);
+            }
+            SDL_Delay(20);
         }
-        SDL_Delay(20);
-    }
+        
     } 
 }
 

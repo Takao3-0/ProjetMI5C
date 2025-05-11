@@ -17,13 +17,18 @@ extern SDL_Rect btnCROIXarchive;
 extern SDL_Rect btnArchiveCriona;
 extern SDL_Rect btnArchiveGlacius;
 extern SDL_Rect btnArchiveTerrorex;
-extern SDL_Rect btnArchiveKaelen;      // asset manquant pour Kaelen
 extern SDL_Rect btnArchiveVulcain;
 extern SDL_Rect btnArchiveCalyra;
 extern SDL_Rect btnArchiveAqualis;
 extern SDL_Rect btnArchiveArcaniste;
 extern SDL_Rect btnArchiveVoltix;
 extern SDL_Rect btnArchiveNova;
+extern SDL_Rect btnArchiveAquanova;
+extern SDL_Rect btnArchiveKaelen;
+extern SDL_Rect btnArchivePyrobane;
+extern SDL_Rect btnArchiveEmbera;
+extern SDL_Rect btnArchiveHydragon;
+extern SDL_Rect btnArchiveVoltazor;
 
 // Menu jeux équipe
 extern SDL_Rect btnCROIXjeux;

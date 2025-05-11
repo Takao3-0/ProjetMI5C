@@ -4,132 +4,64 @@
 #include "createursquad.h"
 #include "fight.h"
 
+void render_squad(SDL_Renderer *ren, SDL_Texture *tex, Slot slot) {
+    int w, h;
+    SDL_QueryTexture(tex, NULL, NULL, &w, &h);
+    SDL_Rect dst = { .x = slot.x, .y = slot.y, .w = w, .h = h };
+    SDL_RenderCopy(ren, tex, NULL, &dst);
+}
+
 void squad_affichage(SDL_Renderer *ren, Equipe_quatre equipe, Slot *slots){
     for (int i=0; i<4; i++){
         switch (equipe.tab[i].NOM){
             int w, h;
             case CRIONA:
-                SDL_QueryTexture(Criona, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst0 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Criona, NULL, &dst0);  
+                render_squad(ren, Criona, slots[i]);
                 break;
             case GLACIUS:
-                SDL_QueryTexture(Glacius, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst1 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Glacius, NULL, &dst1); 
+                render_squad(ren, Glacius, slots[i]);
                 break; 
             case ARCANISTE:
-                SDL_QueryTexture(Arcaniste, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst2 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Arcaniste, NULL, &dst2); 
+                render_squad(ren, Arcaniste, slots[i]);
                 break;
             case CALYRA:
-                SDL_QueryTexture(Calyra, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst3 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Calyra, NULL, &dst3); 
+                render_squad(ren, Calyra, slots[i]);
                 break;  
             case VULCAIN:
-                SDL_QueryTexture(Vulcain, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst4 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Vulcain, NULL, &dst4); 
+                render_squad(ren, Vulcain, slots[i]);
                 break;
             case AQUALIS:
-                SDL_QueryTexture(Aqualis, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst5 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Aqualis, NULL, &dst5); 
+                render_squad(ren, Aqualis, slots[i]);
                 break;
             case NOVA:
-                SDL_QueryTexture(Nova, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst6 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Nova, NULL, &dst6); 
+                render_squad(ren, Nova, slots[i]);
                 break;
             case TERROREX:
-                SDL_QueryTexture(Terrorex, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst7 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Terrorex, NULL, &dst7); 
+                render_squad(ren,Terrorex, slots[i]);
                 break;
             case VOLTIX:
-                SDL_QueryTexture(Voltix, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst8 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, Voltix, NULL, &dst8); 
+                render_squad(ren, Voltix, slots[i]);
                 break;
             case AQUANOVA:
-                SDL_QueryTexture(Aquanova, NULL, NULL, &w, &h);
-                SDL_Rect dst9 = { .x = slots[i].x,
-                                .y = slots[i].y,
-                                .w = w,
-                                .h = h };
-                SDL_RenderCopy(ren, Aquanova, NULL, &dst9);
+                render_squad(ren, Aquanova, slots[i]);
                 break;
-
             case KAELEN:
-                SDL_QueryTexture(Kaelen, NULL, NULL, &w, &h);
-                SDL_Rect dst10 = { .x = slots[i].x,
-                                .y = slots[i].y,
-                                .w = w,
-                                .h = h };
-                SDL_RenderCopy(ren, Kaelen, NULL, &dst10);
+                render_squad(ren, Kaelen, slots[i]);
                 break;
-
             case EMBERA:
-                SDL_QueryTexture(Embera, NULL, NULL, &w, &h);
-                SDL_Rect dst11 = { .x = slots[i].x,
-                                .y = slots[i].y,
-                                .w = w,
-                                .h = h };
-                SDL_RenderCopy(ren, Embera, NULL, &dst11);
+                render_squad(ren, Embera, slots[i]);
                 break;
-
             case VOLTAZOR:
-                SDL_QueryTexture(Voltazor, NULL, NULL, &w, &h);
-                SDL_Rect dst12 = { .x = slots[i].x,
-                                .y = slots[i].y,
-                                .w = w,
-                                .h = h };
-                SDL_RenderCopy(ren, Voltazor, NULL, &dst12);
+                render_squad(ren, Voltazor, slots[i]);
                 break;
-
             case HYDRAGON:
-                SDL_QueryTexture(Hydragon, NULL, NULL, &w, &h);
-                SDL_Rect dst13 = { .x = slots[i].x,
-                                .y = slots[i].y,
-                                .w = w,
-                                .h = h };
-                SDL_RenderCopy(ren, Hydragon, NULL, &dst13);
+                render_squad(ren, Hydragon, slots[i]);
                 break;
-
             case PYROBANE:
-                SDL_QueryTexture(Pyrobane, NULL, NULL, &w, &h);
-                SDL_Rect dst14 = { .x = slots[i].x,
-                                .y = slots[i].y,
-                                .w = w,
-                                .h = h };
-                SDL_RenderCopy(ren, Pyrobane, NULL, &dst14);
+                render_squad(ren, Pyrobane, slots[i]);
                 break;
             case VIDE:
-                SDL_QueryTexture(vide, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst15 = { .x = slots[i].x, .y = slots[i].y, .w = 400, .h = 590 };
-                SDL_RenderCopy(ren, vide, NULL, &dst15); 
+                render_squad(ren, vide, slots[i]);
 
         }        
     }
@@ -158,6 +90,16 @@ void convert_texte(const char *texte, TTF_Font *font, SDL_Renderer *ren, int x, 
     SDL_Color NOIR = {0,0,0,255};
     SDL_Color ROJO = {255,0,0,255};
     SDL_Color BLANC = {255,255,255,255};
+
+    //Couleur réaction
+
+    SDL_Color SURCHARGE = {255,165,0,255 };
+    SDL_Color ELECTROCUTION  = {128,0,255,255 };
+    SDL_Color FONTE = {255,69,0,255 };
+    SDL_Color FREEZE = {135,206,250,255 };
+    SDL_Color SUPRACONDUCTION = {192,192,192,255};
+    SDL_Color EVAPORATION = {200,200,200,255};
+
     SDL_Surface *surface;
     switch (couleur){
         case 1: 
@@ -166,6 +108,24 @@ void convert_texte(const char *texte, TTF_Font *font, SDL_Renderer *ren, int x, 
         case 2:
             surface = TTF_RenderText_Solid(font, texte, ROJO);
             break;
+        case 3:
+            surface = TTF_RenderText_Solid(font, texte, SURCHARGE);
+            break;
+        case 4:
+            surface = TTF_RenderText_Solid(font, texte, ELECTROCUTION);
+            break;
+        case 5:
+            surface = TTF_RenderText_Solid(font, texte, FONTE);
+            break; 
+        case 6:
+            surface = TTF_RenderText_Solid(font, texte, FREEZE);
+            break;
+        case 7:
+            surface = TTF_RenderText_Solid(font, texte, SUPRACONDUCTION);
+            break; 
+        case 8:
+            surface = TTF_RenderText_Solid(font, texte, EVAPORATION);
+            break;          
         default:
             surface = TTF_RenderText_Solid(font, texte, BLANC);
             break;
@@ -264,8 +224,28 @@ void affichage(SDL_Renderer *ren, Perso_select archive_etat, Game_state * etat, 
                     SDL_RenderCopy(ren, archiveVoltix, NULL, NULL);  
                     break;  
                 case NOVA:
-                    SDL_RenderCopy(ren, archiveNova, NULL, NULL);  
-                    break;                                
+                    SDL_RenderCopy(ren, archiveNova, NULL, NULL);
+                    break;
+                case AQUANOVA:
+                    SDL_RenderCopy(ren, archiveAquanova, NULL, NULL);
+                    break;
+                case VOLTAZOR:
+                    SDL_RenderCopy(ren, archiveVoltazor, NULL, NULL);
+                    break;
+                case EMBERA:
+                    SDL_RenderCopy(ren, archiveEmbera, NULL, NULL);
+                    break;
+                case KAELEN:
+                    SDL_RenderCopy(ren, archiveKaelen, NULL, NULL);
+                    break;
+                case PYROBANE:
+                    SDL_RenderCopy(ren, archivePyrobane, NULL, NULL);
+                    break;
+                case HYDRAGON:
+                    SDL_RenderCopy(ren, archiveHydragon, NULL, NULL);
+                    break;
+                default:
+                    break;                               
             }
             break;
         case SELECTION:
@@ -330,106 +310,65 @@ void affichage(SDL_Renderer *ren, Perso_select archive_etat, Game_state * etat, 
 
 }
 
+/*
+SDL_QueryTexture(CrionaF, NULL, NULL, &w, &h);
+        
+SDL_Rect dst0 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
+SDL_RenderCopy(ren, CrionaF, NULL, &dst0);  */
+
+//On avait ça pour chaque case des 2 fonction affichage avant la fonction render squad!!!
+
 void squad_affichage_fight(SDL_Renderer *ren, Equipe_quatre equipe, Slot *slots){
     for (int i=0; i<4; i++){
         switch (equipe.tab[i].NOM){
             int w, h;
             case CRIONA:
-                SDL_QueryTexture(CrionaF, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst0 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, CrionaF, NULL, &dst0);  
+                render_squad(ren, CrionaF, slots[i]);
                 break;
             case GLACIUS:
-                SDL_QueryTexture(GlaciusF, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst1 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, GlaciusF, NULL, &dst1); 
+                render_squad(ren, GlaciusF, slots[i]);
                 break; 
             case ARCANISTE:
-                SDL_QueryTexture(ArcanisteF, NULL, NULL, &w, &h);
-
-                SDL_Rect dst2 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, ArcanisteF, NULL, &dst2); 
+                render_squad(ren, ArcanisteF, slots[i]);
                 break;
             case CALYRA:
-                SDL_QueryTexture(CalyraF, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst3 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, CalyraF, NULL, &dst3); 
+                render_squad(ren, CalyraF, slots[i]);
                 break;  
             case VULCAIN:
-                SDL_QueryTexture(VulcainF, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst4 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, VulcainF, NULL, &dst4); 
+                render_squad(ren, VulcainF, slots[i]);
                 break;
             case AQUALIS:
-                SDL_QueryTexture(AqualisF, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst5 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, AqualisF, NULL, &dst5); 
+                render_squad(ren, AqualisF, slots[i]);
                 break;
             case NOVA:
-                SDL_QueryTexture(NovaF, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst6 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, NovaF, NULL, &dst6); 
+                render_squad(ren, NovaF, slots[i]);
                 break;
             case TERROREX:
-                SDL_QueryTexture(TerrorexF, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst7 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, TerrorexF, NULL, &dst7); 
+                render_squad(ren, TerrorexF, slots[i]);
                 break;
             case VOLTIX:
-                SDL_QueryTexture(VoltixF, NULL, NULL, &w, &h);
-        
-
-                SDL_Rect dst8 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, VoltixF, NULL, &dst8); 
+                render_squad(ren, VoltixF, slots[i]);
                 break;
             case AQUANOVA:
-                SDL_QueryTexture(AquanovaF, NULL, NULL, &w, &h);
-
-                SDL_Rect dst9 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, AquanovaF, NULL, &dst9);
+                render_squad(ren, AquanovaF, slots[i]);
                 break;
             case KAELEN:
-                SDL_QueryTexture(KaelenF, NULL, NULL, &w, &h);
-
-                SDL_Rect dst10 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, KaelenF, NULL, &dst10);
+                render_squad(ren, KaelenF, slots[i]);
                 break;
             case EMBERA:
-                SDL_QueryTexture(EmberaF, NULL, NULL, &w, &h);
-
-                SDL_Rect dst11 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, EmberaF, NULL, &dst11);
+                render_squad(ren, EmberaF, slots[i]);
                 break;
             case VOLTAZOR:
-                SDL_QueryTexture(VoltazorF, NULL, NULL, &w, &h);
-
-                SDL_Rect dst12 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, VoltazorF, NULL, &dst12);
+                render_squad(ren, VoltazorF, slots[i]);
                 break;
             case HYDRAGON:
-                SDL_QueryTexture(HydragonF, NULL, NULL, &w, &h);
-
-                SDL_Rect dst13 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, HydragonF, NULL, &dst13);
+                render_squad(ren, HydragonF, slots[i]);
                 break;
             case PYROBANE:
-                SDL_QueryTexture(PyrobaneF, NULL, NULL, &w, &h);
-
-                SDL_Rect dst14 = { .x = slots[i].x, .y = slots[i].y, .w = w, .h = h };
-                SDL_RenderCopy(ren, PyrobaneF, NULL, &dst14);
+                render_squad(ren, PyrobaneF, slots[i]);
                 break;
             case VIDE:
-                SDL_QueryTexture(vide, NULL, NULL, &w, &h);
-        
-                SDL_Rect dst15 = { .x = slots[i].x, .y = slots[i].y, .w = 400, .h = 590 };
-                SDL_RenderCopy(ren, vide, NULL, &dst15); 
+                render_squad(ren, vide, slots[i]);
 
         }        
     }
@@ -454,8 +393,33 @@ void delay_safe(Uint32 ms, SDL_Renderer *ren) {
     }
 }
 
+void affichage_reaction(int react, int x, int y, SDL_Renderer *ren, TTF_Font *font){
+    switch (react){
+        case 11:
+            convert_texte("EVAPORATION",font,ren,x,y,8);
+            break; 
+        case 110:
+            convert_texte("SURCHARGE",font,ren,x,y,3);
+            break; 
+        case 101:
+            convert_texte("ELECTROCUTION",font,ren,x,y,4);
+            break; 
+        case 1010:
+            convert_texte("FONTE",font,ren,x,y,5);
+            break; 
+        case 1001:
+            convert_texte("GEL",font,ren,x,y,6);
+            break; 
+        case 1100:
+            convert_texte("SUPRACONDUCTION",font,ren,x,y,7);
+            break; 
+        default:
+            break;
+    }
+}
 
-void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Equipe_quatre def, Game_state equipe, TTF_Font *font, Personnage attaquant, Personnage defenseur, int tour, int select, int iddef,  EventType * event, int dmg){
+
+void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Equipe_quatre def, Game_state equipe, TTF_Font *font, Personnage attaquant, Personnage defenseur, int tour, int select, int iddef,  EventType * event, int dmg, int crit, int react){
     SDL_RenderClear(ren); //On efface tout 
     Slot slotsfight[4] = {
         { .x =  270, .y = 65, .w = 0, .h = 0},
@@ -490,6 +454,10 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
         if (*event == EVT_Atk){
             snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, attaquant.listedescapacites[select].nom);
             convert_texte(msg,font,ren,slotshistorique[0].x,slotshistorique[0].y,1);    
+        } else if (*event == EVT_Invalide){
+            snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, attaquant.listedescapacites[select].nom);
+            convert_texte(msg,font,ren,slotshistorique[0].x,slotshistorique[0].y,1);
+            convert_texte("Adversaire invalide car deja mort",font ,ren, slotshistorique[1].x,slotshistorique[1].y,2);                
         } else if (*event == EVT_Adv){
             printf("On fait ça \n");
             snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, attaquant.listedescapacites[select].nom);
@@ -497,7 +465,6 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
             snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, defenseur.name);
             convert_texte(msg,font,ren,slotshistorique[1].x,slotshistorique[1].y,1);
         } else if (*event == EVT_Recap){
-
             //Affichage de qui attaque qui
             snprintf(msg, sizeof(msg), "%s attaque %s", attaquant.name, attaquant.listedescapacites[select].nom);
             convert_texte(msg, font, ren, slotshistorique[0].x, slotshistorique[0].y,1); 
@@ -513,7 +480,16 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
 
             //Affichage des dégâts sur l'écran de façon temp.
             snprintf(msg, sizeof(msg), "%d", dmg);
-            convert_texte(msg,font,ren, slotsfight[iddef].x+50, slotsfight[iddef].y+50,2);
+            convert_texte(msg,font,ren, slotsfight[iddef].x+85, slotsfight[iddef].y+50,2);
+
+            //AFFICHAGE DE COUP CRITIQUE
+            if (crit == 1){ //agit comme un bool
+                convert_texte("COUP CRITIQUE!",font,ren,slotsfight[iddef].x+35, slotsfight[iddef].y+75,2);
+            }
+
+            //Affichage de la réaction 
+
+            affichage_reaction(react,slotsfight[iddef].x+35,slotsfight[iddef].y+100,ren,font);
 
             affichage_attaque(attaquant,ren,font);
             SDL_RenderPresent(ren);

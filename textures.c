@@ -35,6 +35,12 @@ SDL_Texture *archiveCalyra    = NULL;
 SDL_Texture *archiveNova      = NULL;
 SDL_Texture *archiveTerrorex  = NULL;
 SDL_Texture *archiveAqualis   = NULL;
+SDL_Texture *archiveAquanova = NULL;
+SDL_Texture *archiveVoltazor = NULL;
+SDL_Texture *archiveEmbera   = NULL;
+SDL_Texture *archiveKaelen   = NULL;
+SDL_Texture *archivePyrobane = NULL;
+SDL_Texture *archiveHydragon = NULL;
 
 // Add textures
 SDL_Texture *AddCriona    = NULL;
@@ -119,6 +125,12 @@ void Import_tex(SDL_Renderer *ren){
     archiveNova      = LoadTexture(ren, "assets/EquipeNova.png");
     archiveTerrorex  = LoadTexture(ren, "assets/EquipeTerrorex.png");
     archiveAqualis   = LoadTexture(ren, "assets/EquipeAqualis.png");
+    archiveAquanova = LoadTexture(ren, "assets/EquipeAquanova.png");
+    archiveVoltazor = LoadTexture(ren, "assets/EquipeVoltazor.png");
+    archiveEmbera   = LoadTexture(ren, "assets/EquipeEmbera.png");
+    archiveKaelen   = LoadTexture(ren, "assets/EquipeKaelen.png");
+    archivePyrobane = LoadTexture(ren, "assets/EquipePyrobane.png");
+    archiveHydragon = LoadTexture(ren, "assets/EquipeHydragon.png");
 
     AddCriona    = LoadTexture(ren, "assets/AddCriona.png");
     AddVoltix    = LoadTexture(ren, "assets/AddVoltix.png");
