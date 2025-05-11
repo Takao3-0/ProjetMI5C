@@ -124,6 +124,7 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
             int my = e.button.y;
             if (e.type == SDL_QUIT) {
                 fightrunning = false;
+                *etat = MENUP;
             }
             if (compteur_de_tour % 2 == 0) { // Equipe A qui attaque
                 equipe = E1;

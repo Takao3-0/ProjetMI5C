@@ -19,14 +19,14 @@ int main(int argc, char* argv[]) {
     srand(time(NULL));
     Equipe_quatre squad1;
     Equipe_quatre squad2;
-    /*squad1.tab[0]= tabPerso[13];
+    squad1.tab[0]= tabPerso[13];
     squad1.tab[1]= tabPerso[14];
     squad1.tab[2]= tabPerso[9];
     squad1.tab[3]= tabPerso[4];
     squad2.tab[0]= tabPerso[13];
     squad2.tab[1]= tabPerso[8];
     squad2.tab[2]= tabPerso[3];
-    squad2.tab[3]= tabPerso[5];*/
+    squad2.tab[3]= tabPerso[5];
     /*printf(VERT"L'equipe est composé de : %s %s %s %s\n"RESET,
         squad1.tab[0].name,
         squad1.tab[1].name, 

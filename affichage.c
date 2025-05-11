@@ -202,7 +202,6 @@ void affichage_attaque(Personnage attaquant, SDL_Renderer *ren, TTF_Font *font){
     char msg[64];
     for (int i=0; i<4; i++){ //4 attaques c'est pour ça
         convert_texte(attaquant.listedescapacites[i].nom, font, ren, attaques[i].x, attaques[i].y,1);
-        convert_texte(attaquant.listedescapacites[i].description, font, ren, attaques[i].x, attaques[i].y+25,1);
         snprintf(msg, sizeof(msg), "Damage : %d%", attaquant.listedescapacites[i].damage);
         convert_texte(msg, font, ren, attaques[i].x, attaques[i].y+50,1 );
     }

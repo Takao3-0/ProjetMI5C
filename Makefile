@@ -1,15 +1,32 @@
 CC = gcc
-CFLAGS = -Iinclude
-LDFLAGS = -Llib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 BUILD_DIR = build
 
 SRC = main fight affichage createursquad textures btn weapons personnages
 OBJ = $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(SRC)))
 
-all: exec
+# Détection de l'OS
+ifeq ($(OS),Windows_NT)
+	CFLAGS = -Iinclude
+	LDFLAGS = -Llib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
+	RM = del /Q
+	MKDIR = if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
+	SEP = \\
+	EXEC = exec.exe
+	RUN = .\\exec.exe
+else
+	CFLAGS = `sdl2-config --cflags`
+	LDFLAGS = `sdl2-config --libs` -lSDL2_image -lSDL2_ttf
+	RM = rm -f
+	MKDIR = mkdir -p $(BUILD_DIR)
+	SEP = /
+	EXEC = exec
+	RUN = ./exec
+endif
+
+all: $(EXEC)
 
 $(BUILD_DIR):
-	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
+	$(MKDIR)
 
 $(BUILD_DIR)/main.o: main.c head.h personnages.h fight.h createursquad.h weapons.h btn.h textures.h affichage.h | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c main.c -o $@
@@ -35,14 +52,13 @@ $(BUILD_DIR)/weapons.o: weapons.c weapons.h | $(BUILD_DIR)
 $(BUILD_DIR)/personnages.o: personnages.c head.h personnages.h textures.h | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c personnages.c -o $@
 
-exec: $(OBJ)
-	$(CC) $(OBJ) -o exec $(LDFLAGS)
+$(EXEC): $(OBJ)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
 
 clean:
-	@if exist $(BUILD_DIR)\*.o (del /Q $(BUILD_DIR)\*.o) else (rm -f $(BUILD_DIR)/*.o || true)
-	@if exist exec.exe (del /Q exec.exe) else (rm -f exec || true)
+	-$(RM) $(BUILD_DIR)$(SEP)*.o
+	-$(RM) $(EXEC)
 
-run: exec
+run: $(EXEC)
 	@echo Exécution du programme...
-	@.\exec.exe
-
+	@$(RUN)
