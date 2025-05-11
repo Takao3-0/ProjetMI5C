@@ -19,14 +19,14 @@ int main(int argc, char* argv[]) {
     srand(time(NULL));
     Equipe_quatre squad1;
     Equipe_quatre squad2;
-    squad1.tab[0]= tabPerso[13];
+    /*squad1.tab[0]= tabPerso[13];
     squad1.tab[1]= tabPerso[14];
     squad1.tab[2]= tabPerso[9];
     squad1.tab[3]= tabPerso[4];
     squad2.tab[0]= tabPerso[13];
     squad2.tab[1]= tabPerso[8];
     squad2.tab[2]= tabPerso[3];
-    squad2.tab[3]= tabPerso[5];
+    squad2.tab[3]= tabPerso[5];*/
     /*printf(VERT"L'equipe est composé de : %s %s %s %s\n"RESET,
         squad1.tab[0].name,
         squad1.tab[1].name, 
@@ -157,7 +157,7 @@ int main(int argc, char* argv[]) {
             } else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && etat == VERSUS4 ){
                 equipe = E1;
                 printf("Passage en fight\n");
-                fight(&squad1,&squad2, ren, archive_etat, &etat, selection, equipe, font);
+                //fight(&squad1,&squad2, ren, archive_etat, &etat, selection, equipe, font);
 
             }
         }
@@ -167,6 +167,9 @@ int main(int argc, char* argv[]) {
             affichage(ren, archive_etat, &etat, selection, squad1, equipe,font);                    
         } else if (equipe == E2){
             affichage(ren, archive_etat, &etat, selection, squad2, equipe,font); 
+        }
+        if (etat == VERSUS4){ //On appel la fonction fight ici parce qu'elle gère elle même son affichage. Dans le cas ou on l'appel plus haut on a un écran noir le temps d'un clic.
+           fight(&squad1,&squad2, ren, archive_etat, &etat, selection, equipe, font); 
         }
 
     }

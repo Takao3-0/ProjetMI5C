@@ -476,7 +476,7 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
         convert_texte("Impossible de lancer le combat en raison d'equipe manquante.",font,ren,350,100,1);
         printf("Erreur\n");
         SDL_RenderPresent(ren); 
-        delay_safe(2000,ren); //idem, 2'' d'affichage de message d'erreur
+        delay_safe(1000,ren); //idem, 1'' d'affichage de message d'erreur
         *etat = MENUP;
     } else {
         SDL_RenderCopy(ren, Fight, NULL, NULL);
@@ -507,7 +507,7 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
             convert_texte(msg, font, ren, slotshistorique[1].x, slotshistorique[1].y,1);
 
             //Affichage des dégâts sur l'interface "historique"
-            snprintf(msg, sizeof(msg), "%s se voit inflige %d", defenseur.name, dmg); // <-- attention ici, bug probable !
+            snprintf(msg, sizeof(msg), "%s subit %d degats", defenseur.name, dmg); // <-- attention ici, bug probable !
             convert_texte(msg, font, ren, slotshistorique[2].x, slotshistorique[2].y,1);
 
 
