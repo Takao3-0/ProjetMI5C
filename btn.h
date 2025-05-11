@@ -39,13 +39,18 @@ extern SDL_Rect btnCROIXselection;
 extern SDL_Rect btnSelectionCriona;
 extern SDL_Rect btnSelectionGlacius;
 extern SDL_Rect btnSelectionTerrorex;
-extern SDL_Rect btnSelectionKaelen;    // asset manquant pour Kaelen
 extern SDL_Rect btnSelectionVulcain;
 extern SDL_Rect btnSelectionCalyra;
 extern SDL_Rect btnSelectionAqualis;
 extern SDL_Rect btnSelectionArcaniste;
 extern SDL_Rect btnSelectionVoltix;
 extern SDL_Rect btnSelectionNova;
+extern SDL_Rect btnSelectionAquanova;
+extern SDL_Rect btnSelectionKaelen;
+extern SDL_Rect btnSelectionPyrobane;
+extern SDL_Rect btnSelectionEmbera;
+extern SDL_Rect btnSelectionHydragon;
+extern SDL_Rect btnSelectionVoltazor;
 
 
 //Btn de selection d'attaque

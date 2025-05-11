@@ -21,7 +21,19 @@ Perso_select attribution_id(Personnage perso){
         return ARCANISTE;
     }else if (strcmp(perso.name, "Voltix")     == 0) {
         return VOLTIX;
-    }
+    }else if (strcmp(perso.name, "Embera")     == 0) {
+        return EMBERA;
+    }else if (strcmp(perso.name, "Aquanova")     == 0) {
+        return AQUANOVA;
+    }else if (strcmp(perso.name, "Kaelen")     == 0) {
+        return KAELEN;
+    }else if (strcmp(perso.name, "Voltazor")     == 0) {
+        return VOLTAZOR;
+    }else if (strcmp(perso.name, "Pyrobane")     == 0) {
+        return PYROBANE;
+    }else if (strcmp(perso.name, "Hydragon")     == 0) {
+        return HYDRAGON;
+    }      
 }
 
 Personnage * extract(){
@@ -89,13 +101,19 @@ Personnage * extract(){
 }
 
 void attribution_texture(Personnage *tablist){
-    tablist[13].texture = Criona;
-    tablist[3].texture = Voltix;
-    tablist[7].texture = Terrorex;
-    tablist[8].texture = Nova;
-    tablist[14].texture = Arcaniste;
-    tablist[9].texture = Calyra;
-    tablist[6].texture = Aqualis;
-    tablist[5].texture = Vulcain;
-    tablist[4].texture = Glacius;
+    tablist[13].texture    = Criona;
+    tablist[3].texture     = Voltix;
+    tablist[7].texture     = Terrorex;
+    tablist[8].texture     = Nova;
+    tablist[14].texture    = Arcaniste;
+    tablist[9].texture     = Calyra;
+    tablist[6].texture     = Aqualis;
+    tablist[5].texture     = Vulcain;
+    tablist[4].texture     = Glacius;
+    tablist[12].texture    = Voltazor;
+    tablist[11].texture    = Aquanova;
+    tablist[10].texture    = Pyrobane;
+    tablist[0].texture     = Embera;
+    tablist[1].texture     = Hydragon;
+    tablist[2].texture     = Kaelen;
 }

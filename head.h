@@ -64,6 +64,12 @@ typedef enum {
     NOVA,
     ARCANISTE,
     VOLTIX,
+    AQUANOVA,
+    EMBERA,
+    HYDRAGON,
+    KAELEN,
+    VOLTAZOR,
+    PYROBANE,
     IRONAPSOL,
 } Perso_select;
 

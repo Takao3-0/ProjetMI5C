@@ -21,6 +21,12 @@ extern SDL_Texture *Terrorex;
 extern SDL_Texture *Glacius;
 extern SDL_Texture *Nova;
 extern SDL_Texture *Vulcain;
+extern SDL_Texture *Aquanova;
+extern SDL_Texture *Embera;
+extern SDL_Texture *Kaelen;
+extern SDL_Texture *Voltazor;
+extern SDL_Texture *Pyrobane;
+extern SDL_Texture *Hydragon;
 
 //Chargement textures menu Archives
 extern SDL_Texture *archiveCriona;
@@ -43,6 +49,12 @@ extern SDL_Texture *AddCalyra;
 extern SDL_Texture *AddNova;
 extern SDL_Texture *AddTerrorex;
 extern SDL_Texture *AddAqualis;
+extern SDL_Texture *AddAquanova;
+extern SDL_Texture *AddKaelen;
+extern SDL_Texture *AddEmbera;
+extern SDL_Texture *AddVoltazor;
+extern SDL_Texture *AddHydragon;
+extern SDL_Texture *AddPyrobane;
 
 
 extern SDL_Texture *Fight;
@@ -56,6 +68,12 @@ extern SDL_Texture *NovaF;
 extern SDL_Texture *CalyraF;
 extern SDL_Texture *VulcainF;
 extern SDL_Texture *ArcanisteF;
+extern SDL_Texture *AquanovaF;
+extern SDL_Texture *PyrobaneF;
+extern SDL_Texture *EmberaF;
+extern SDL_Texture *HydragonF;
+extern SDL_Texture *KaelenF;
+extern SDL_Texture *VoltazorF;
 
 SDL_Texture* LoadTexture(SDL_Renderer *renderer, const char *filePath);
 void Import_tex(SDL_Renderer *ren);

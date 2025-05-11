@@ -18,6 +18,12 @@ SDL_Texture *Terrorex  = NULL;
 SDL_Texture *Glacius   = NULL;
 SDL_Texture *Nova      = NULL;
 SDL_Texture *Vulcain   = NULL;
+SDL_Texture *Aquanova  = NULL;
+SDL_Texture *Embera    = NULL;
+SDL_Texture *Kaelen    = NULL;
+SDL_Texture *Voltazor  = NULL;
+SDL_Texture *Pyrobane  = NULL;
+SDL_Texture *Hydragon  = NULL;
 
 // archives
 SDL_Texture *archiveCriona    = NULL;
@@ -40,6 +46,12 @@ SDL_Texture *AddCalyra    = NULL;
 SDL_Texture *AddNova      = NULL;
 SDL_Texture *AddTerrorex  = NULL;
 SDL_Texture *AddAqualis   = NULL;
+SDL_Texture *AddAquanova  = NULL;
+SDL_Texture *AddKaelen    = NULL;
+SDL_Texture *AddEmbera    = NULL;
+SDL_Texture *AddVoltazor  = NULL;
+SDL_Texture *AddHydragon  = NULL;
+SDL_Texture *AddPyrobane  = NULL;
 
 // Fight
 
@@ -54,6 +66,13 @@ SDL_Texture *NovaF        = NULL;
 SDL_Texture *CalyraF      = NULL;
 SDL_Texture *VulcainF     = NULL;
 SDL_Texture *ArcanisteF   = NULL;
+SDL_Texture *AquanovaF    = NULL;
+SDL_Texture *PyrobaneF    = NULL;
+SDL_Texture *EmberaF      = NULL;
+SDL_Texture *HydragonF    = NULL;
+SDL_Texture *KaelenF      = NULL;
+SDL_Texture *VoltazorF    = NULL;
+
 //
 
 // implémentation du chargeur d'img
@@ -84,6 +103,12 @@ void Import_tex(SDL_Renderer *ren){
     Glacius   = LoadTexture(ren, "assets/GlaciusPNG.png");
     Nova      = LoadTexture(ren, "assets/NovaPNG.png");
     Vulcain   = LoadTexture(ren, "assets/VulcainPNG.png");
+    Aquanova  = LoadTexture(ren, "assets/AquanovaPNG.png");
+    Embera    = LoadTexture(ren, "assets/EmberaPNG.png");
+    Kaelen    = LoadTexture(ren, "assets/KaelenPNG.png");
+    Voltazor  = LoadTexture(ren, "assets/VoltazorPNG.png");
+    Pyrobane  = LoadTexture(ren, "assets/PyrobanePNG.png");
+    Hydragon  = LoadTexture(ren, "assets/HydragonPNG.png");
 
     archiveCriona    = LoadTexture(ren, "assets/EquipeCriona.png");
     archiveVoltix    = LoadTexture(ren, "assets/EquipeVoltix.png");
@@ -104,6 +129,12 @@ void Import_tex(SDL_Renderer *ren){
     AddNova      = LoadTexture(ren, "assets/AddNova.png");
     AddTerrorex  = LoadTexture(ren, "assets/AddTerrorex.png");
     AddAqualis   = LoadTexture(ren, "assets/AddAqualis.png");
+    AddAquanova   = LoadTexture(ren, "assets/AddAquanova.png");
+    AddKaelen   = LoadTexture(ren, "assets/AddKaelen.png");
+    AddEmbera   = LoadTexture(ren, "assets/AddEmbera.png");
+    AddVoltazor   = LoadTexture(ren, "assets/AddVoltazor.png");
+    AddHydragon   = LoadTexture(ren, "assets/AddHydragon.png");
+    AddPyrobane   = LoadTexture(ren, "assets/AddPyrobane.png");
 
     //Pour le fight
 
@@ -118,6 +149,12 @@ void Import_tex(SDL_Renderer *ren){
     CalyraF      = LoadTexture(ren, "assets/CalyraF.png");
     VulcainF     = LoadTexture(ren, "assets/VulcainF.png");
     ArcanisteF   = LoadTexture(ren, "assets/ArcanisteF.png");
+    AquanovaF    = LoadTexture(ren, "assets/AquanovaF.png");
+    PyrobaneF    = LoadTexture(ren, "assets/PyrobaneF.png");
+    EmberaF      = LoadTexture(ren, "assets/EmberaF.png");
+    HydragonF    = LoadTexture(ren, "assets/HydragonF.png");
+    KaelenF      = LoadTexture(ren, "assets/KaelenF.png");
+    VoltazorF    = LoadTexture(ren, "assets/VoltazorF.png");
 
 
 }
