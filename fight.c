@@ -26,7 +26,6 @@ int damage(Personnage attaquant, Personnage * defenseur,int capa, int *crit, int
             printf(ORANGE"Le type de %s est alors %d\n"RESET,defenseur->name, defenseur->type);
         }
         *crit = 1;
-        printf(ROUGE"Les degats recu sont de %d\n"RESET,degats);
     } else {
         degats = ((attaquant.atk*(attaquant.listedescapacites[capa].damage/100.0))*attaquant.atk)/(attaquant.atk+defenseur->def);
         *elmt = verification_type(&attaquant, defenseur, capa, &degats);
@@ -35,8 +34,8 @@ int damage(Personnage attaquant, Personnage * defenseur,int capa, int *crit, int
             printf(ORANGE"Le type de %s, est alors %d\n"RESET,defenseur->name, defenseur->type);
         }
         *crit = 0;
-        printf(ROUGE"Les degats recu sont de %d\n"RESET,degats);
     }
+    printf(ROUGE"Les degats recu sont de %d\n"RESET,degats);
     return degats; //On return de force un entier, plus simple de travailler avec des entier dans le contexte du jeu.
 }
 
@@ -97,17 +96,58 @@ int verification(Equipe_quatre a){
     return rturn;
 }
 
-void resetpv(Equipe_quatre *equipe){
+void resetpv(Equipe_quatre *equipe){ //Reset les pv de tout les perso au PVMAX dans le cas ou on relance un combat 
     for (int i=0; i<4; i++){
         equipe->tab[i].pv = equipe->tab[i].pvmax;
     }
 }
 
-bool adversaire_valide(Personnage defenseur){ //L'adversaire est valide si ses PV sont > 0
+bool entite_valide(Personnage defenseur){ //L'adversaire est valide si ses PV sont > 0 (on utilise cette fonction pour savoir si l'attaquant est aussi valide)
     if (defenseur.pv <= 0){
-       return false; 
+        return false; 
     }
     return true;
+}
+
+bool attaque_valide(Personnage * attaquant, int selection){ //SI L'attaque est utilisable, on dit qu'on l'utilise avec un bool "vrai" et on reset son CD à sa valeur initiale.
+    if (attaquant->listedescapacites[selection].cd == 0){
+        return true; //=> en gros l'attaque est valide
+    }
+    else {
+        return false; //=> le cd n'est pas dispo, on ne peut pas attaquer, l'attaquant doit choisir une nouvelle attaque 
+    }
+}
+
+void applycd(Personnage * attaquant){ //Permet de compter les tour de cd
+    for (int i=0;i<4;i++){
+        if (attaquant->listedescapacites[i].cd > 0){
+        attaquant->listedescapacites[i].cd --;            
+        }
+    }
+}
+
+void setcd(Equipe_quatre * ekip){ //On met le cd à les CD à 0 pour le début du combat (seulement les 3 atk de base)
+    for (int i=0; i<4;i++){
+        for (int j=0; j<3; j++){
+            ekip->tab[i].listedescapacites[j].cd = 0;
+        }
+    }
+}
+
+
+void nextTurn(int *i, int *compteur_tours, Game_state *equipe) {
+    if (*i == 3) {
+        *i = 0;
+        (*compteur_tours)++;
+        /* Bascule d’équipe */
+        if (*equipe == E1){
+            *equipe = E2;
+        } else {
+            *equipe = E1;
+        }
+    } else {
+        (*i)++;
+    }
 }
 
 
@@ -125,10 +165,22 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
     Fight_state fight_etat = Slt_atk;
     SDL_Event e;
     EventType event = EVT_Vide;
+    setcd(equipea);
+    setcd(equipeb);
+    equipe = E1;
+    bool valide;
     while (fightrunning){
         while(SDL_PollEvent(&e)){
             int mx = e.button.x;
             int my = e.button.y;
+            if (equipe == E1){
+                valide = entite_valide(equipea->tab[i]);
+            } else {
+                valide = entite_valide(equipeb->tab[i]);
+            }
+            if (valide == false ){
+                nextTurn(&i,&compteur_de_tour,&equipe);
+            }
             if (e.type == SDL_QUIT || *etat == MENUP) {
                 fightrunning = false;
                 resetpv(equipea);
@@ -136,7 +188,6 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
                 break;
             }
             if (compteur_de_tour % 2 == 0) { // Equipe A qui attaque
-                equipe = E1;
                 if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && fight_etat == Slt_atk ){ //Séléction de l'atk;
                     if (mx >= btnA1.x && mx < btnA1.x + btnA1.w && my >= btnA1.y && my < btnA1.y + btnA1.h){
                         atk = 0; 
@@ -183,7 +234,6 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
                     }               
                 }            
             } else { // Equipe B qui attaque
-                    equipe = E2;
                     if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && fight_etat == Slt_atk ){ //Séléction de l'atk;
                         if (mx >= btnA1.x && mx < btnA1.x + btnA1.w && my >= btnA1.y && my < btnA1.y + btnA1.h){
                             atk = 0; 
@@ -230,12 +280,28 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
                         }                  
                     } 
             }
+
+            //Ici on vérifie que l'attaque est valide, dans le cas contraire, on renvoie fight_etat en selection d'attaque. 
+            if (fight_etat == Slt_Adversaire){ 
+                bool rtn2;
+                if(equipe == E1){
+                    rtn2 = attaque_valide(&equipea->tab[i], atk);
+                } else {
+                    rtn2 = attaque_valide(&equipeb->tab[i], atk);
+                }
+                if (rtn2 != true){
+                    fight_etat = Slt_atk;
+                    event = EVT_InvalideATK;
+                }
+            }
+
+            //Même chose cette fois pour l'adversaire (pv <= 0)
             if (fight_etat == Slt_Fight){
                 bool rtn;
                 if (equipe == E1){
-                    rtn = adversaire_valide(equipeb->tab[adversaire]);
+                    rtn = entite_valide(equipeb->tab[adversaire]);
                 } else {
-                    rtn = adversaire_valide(equipea->tab[adversaire]);
+                    rtn = entite_valide(equipea->tab[adversaire]);
                 } 
                 if (rtn != true){
                     fight_etat = Slt_Adversaire;
@@ -246,10 +312,8 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
             switch (fight_etat){
                 case Slt_atk:
                     if (equipe == E1){
-                        event = EVT_Vide;
                         affichage_fight(ren,etat,*equipea,*equipeb,equipe,font,equipea->tab[i],equipeb->tab[0],compteur_de_tour,atk,adversaire,&event,0,crit,0);    
                     } else {
-                        event = EVT_Vide;
                         affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[0],compteur_de_tour,atk,adversaire,&event,0,crit,0);                    
                     }
                     break;
@@ -264,11 +328,15 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
                     crit = 0, elmt  = 0;
                     switch (equipe){
                         case E1: //E1 attaque E2 reçoit les dmgs
+                            equipea->tab[i].listedescapacites[atk].cd = equipea->tab[i].listedescapacites[atk].cdreset;
+                            applycd(&equipea->tab[i]);
                             degat = damage(equipea->tab[i],&equipeb->tab[adversaire],atk,&crit, &elmt);
                             equipeb->tab[adversaire].pv -= degat;
                             printf(ROUGE"Les pv de %s sont alors de %d\n"RESET,equipeb->tab[adversaire].name, equipeb->tab[adversaire].pv);
                             break;
                         case E2: //E2 attaque E1 reçoit les dmgs
+                            equipeb->tab[i].listedescapacites[atk].cd = equipeb->tab[i].listedescapacites[atk].cdreset;
+                            applycd(&equipeb->tab[i]);
                             degat = damage(equipeb->tab[i],&equipea->tab[adversaire],atk,&crit, &elmt);
                             equipea->tab[adversaire].pv -= degat;
                             printf(ROUGE"Les pv de %s sont alors de %d\n"RESET,equipea->tab[adversaire].name, equipea->tab[adversaire].pv);
@@ -281,12 +349,8 @@ void fight(Equipe_quatre *equipea, Equipe_quatre *equipeb,SDL_Renderer *ren, Per
                         event = EVT_Recap;
                         affichage_fight(ren,etat,*equipeb,*equipea,equipe,font,equipeb->tab[i],equipea->tab[adversaire],compteur_de_tour,atk,adversaire,&event,degat,crit,elmt);                    
                     }
-                    if (i==3){
-                        i=0;
-                        compteur_de_tour ++;
-                    }else { 
-                        i++;
-                    };    
+                    nextTurn(&i,&compteur_de_tour,&equipe);  
+                      
                     fight_etat = Slt_atk;
                     break; 
             } 

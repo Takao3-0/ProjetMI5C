@@ -163,7 +163,9 @@ void affichage_attaque(Personnage attaquant, SDL_Renderer *ren, TTF_Font *font){
     for (int i=0; i<4; i++){ //4 attaques c'est pour ça
         convert_texte(attaquant.listedescapacites[i].nom, font, ren, attaques[i].x, attaques[i].y,1);
         snprintf(msg, sizeof(msg), "Damage : %d%", attaquant.listedescapacites[i].damage);
-        convert_texte(msg, font, ren, attaques[i].x, attaques[i].y+50,1 );
+        convert_texte(msg, font, ren, attaques[i].x, attaques[i].y+50,1);
+        snprintf(msg, sizeof (msg), "CD actuel : %d tour", attaquant.listedescapacites[i].cd);
+        convert_texte(msg, font, ren, attaques[i].x, attaques[i].y+25,1);
     }
     SDL_RenderPresent(ren);
 }
@@ -320,59 +322,120 @@ SDL_RenderCopy(ren, CrionaF, NULL, &dst0);  */
 
 void squad_affichage_fight(SDL_Renderer *ren, Equipe_quatre equipe, Slot *slots){
     for (int i=0; i<4; i++){
-        switch (equipe.tab[i].NOM){
-            int w, h;
-            case CRIONA:
-                render_squad(ren, CrionaF, slots[i]);
-                break;
-            case GLACIUS:
-                render_squad(ren, GlaciusF, slots[i]);
-                break; 
-            case ARCANISTE:
-                render_squad(ren, ArcanisteF, slots[i]);
-                break;
-            case CALYRA:
-                render_squad(ren, CalyraF, slots[i]);
-                break;  
-            case VULCAIN:
-                render_squad(ren, VulcainF, slots[i]);
-                break;
-            case AQUALIS:
-                render_squad(ren, AqualisF, slots[i]);
-                break;
-            case NOVA:
-                render_squad(ren, NovaF, slots[i]);
-                break;
-            case TERROREX:
-                render_squad(ren, TerrorexF, slots[i]);
-                break;
-            case VOLTIX:
-                render_squad(ren, VoltixF, slots[i]);
-                break;
-            case AQUANOVA:
-                render_squad(ren, AquanovaF, slots[i]);
-                break;
-            case KAELEN:
-                render_squad(ren, KaelenF, slots[i]);
-                break;
-            case EMBERA:
-                render_squad(ren, EmberaF, slots[i]);
-                break;
-            case VOLTAZOR:
-                render_squad(ren, VoltazorF, slots[i]);
-                break;
-            case HYDRAGON:
-                render_squad(ren, HydragonF, slots[i]);
-                break;
-            case PYROBANE:
-                render_squad(ren, PyrobaneF, slots[i]);
-                break;
-            case VIDE:
-                render_squad(ren, vide, slots[i]);
+        if (equipe.tab[i].pv >0){
+            switch (equipe.tab[i].NOM){
+                int w, h;
+                case CRIONA:
+                    render_squad(ren, CrionaF, slots[i]);
+                    break;
+                case GLACIUS:
+                    render_squad(ren, GlaciusF, slots[i]);
+                    break; 
+                case ARCANISTE:
+                    render_squad(ren, ArcanisteF, slots[i]);
+                    break;
+                case CALYRA:
+                    render_squad(ren, CalyraF, slots[i]);
+                    break;  
+                case VULCAIN:
+                    render_squad(ren, VulcainF, slots[i]);
+                    break;
+                case AQUALIS:
+                    render_squad(ren, AqualisF, slots[i]);
+                    break;
+                case NOVA:
+                    render_squad(ren, NovaF, slots[i]);
+                    break;
+                case TERROREX:
+                    render_squad(ren, TerrorexF, slots[i]);
+                    break;
+                case VOLTIX:
+                    render_squad(ren, VoltixF, slots[i]);
+                    break;
+                case AQUANOVA:
+                    render_squad(ren, AquanovaF, slots[i]);
+                    break;
+                case KAELEN:
+                    render_squad(ren, KaelenF, slots[i]);
+                    break;
+                case EMBERA:
+                    render_squad(ren, EmberaF, slots[i]);
+                    break;
+                case VOLTAZOR:
+                    render_squad(ren, VoltazorF, slots[i]);
+                    break;
+                case HYDRAGON:
+                    render_squad(ren, HydragonF, slots[i]);
+                    break;
+                case PYROBANE:
+                    render_squad(ren, PyrobaneF, slots[i]);
+                    break;
+                case VIDE:
+                    render_squad(ren, vide, slots[i]);
 
-        }        
+            } 
+        }          
     }
+}
 
+void cadre_affichage_fight(SDL_Renderer *ren, Equipe_quatre equipe, Slot *slots){
+    for (int i=0; i<4; i++){
+        if (equipe.tab[i].pv >0){
+            switch (equipe.tab[i].NOM){
+                int w, h;
+                case CRIONA:
+                    render_squad(ren, CrionaCadre, slots[i]);
+                    break;
+                case GLACIUS:
+                    render_squad(ren, GlaciusCadre, slots[i]);
+                    break; 
+                case ARCANISTE:
+                    render_squad(ren, ArcanisteCadre, slots[i]);
+                    break;
+                case CALYRA:
+                    render_squad(ren, CalyraCadre, slots[i]);
+                    break;  
+                case VULCAIN:
+                    render_squad(ren, VulcainCadre, slots[i]);
+                    break;
+                case AQUALIS:
+                    render_squad(ren, AqualisCadre, slots[i]);
+                    break;
+                case NOVA:
+                    render_squad(ren, NovaCadre, slots[i]);
+                    break;
+                case TERROREX:
+                    render_squad(ren, TerrorexCadre, slots[i]);
+                    break;
+                case VOLTIX:
+                    render_squad(ren, VoltixCadre, slots[i]);
+                    break;
+                case AQUANOVA:
+                    render_squad(ren, AquanovaCadre, slots[i]);
+                    break;
+                case KAELEN:
+                    render_squad(ren, KaelenCadre, slots[i]);
+                    break;
+                case EMBERA:
+                    render_squad(ren, EmberaCadre, slots[i]);
+                    break;
+                case VOLTAZOR:
+                    render_squad(ren, VoltazorCadre, slots[i]);
+                    break;
+                case HYDRAGON:
+                    render_squad(ren, HydragonCadre, slots[i]);
+                    break;
+                case PYROBANE:
+                    render_squad(ren, PyrobaneCadre, slots[i]);
+                    break;
+                default :
+                    printf(ROUGE"Erreur\n"RESET);
+
+            } 
+        } else {
+            render_squad(ren, Dead, slots[i]);    
+        }          
+    }
 }
 
 void delay_safe(Uint32 ms, SDL_Renderer *ren) {
@@ -434,6 +497,18 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
         { .x = 870, .y = 660, .w = 0, .h = 0},
         { .x = 870, .y = 680, .w = 0, .h = 0},
     };
+    Slot cadre[4] = {
+        { .x =  107, .y = 444, .w = 0, .h = 0},
+        { .x = 207, .y = 444, .w = 0, .h = 0},
+        { .x =  307, .y = 444, .w = 0, .h = 0},
+        { .x = 407, .y = 444, .w = 0, .h = 0},
+    };
+    Slot cadre2[4] = {
+        { .x =  859, .y = 444, .w = 0, .h = 0},
+        { .x = 959, .y = 444, .w = 0, .h = 0},
+        { .x =  1059, .y = 444, .w = 0, .h = 0},
+        { .x = 1159, .y = 444, .w = 0, .h = 0},
+    };
     int a = verificationcomplete(atk);
     if (a == 1 ){
         SDL_RenderCopy(ren, screenPlay, NULL, NULL);  
@@ -451,15 +526,20 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
         //Affichage du tour;
         snprintf(msg, sizeof(msg), "Tour numero %d, %s attaque", tour+1, attaquant.name);
         convert_texte(msg,font,ren,870,580,1);
+        cadre_affichage_fight(ren,atk,cadre);
+        cadre_affichage_fight(ren,def,cadre2);
+        convert_texte("EQUIPE ATTAQUANTE",font ,ren, 187, 410,1);
+        convert_texte("EQUIPE DEFENSEUSE",font ,ren, 939, 410,1);
         if (*event == EVT_Atk){
             snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, attaquant.listedescapacites[select].nom);
             convert_texte(msg,font,ren,slotshistorique[0].x,slotshistorique[0].y,1);    
+        } else if (*event == EVT_InvalideATK){
+            convert_texte("Attaque invalide -> CD",font,ren,slotshistorique[1].x,slotshistorique[1].y,2);   
         } else if (*event == EVT_Invalide){
             snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, attaquant.listedescapacites[select].nom);
             convert_texte(msg,font,ren,slotshistorique[0].x,slotshistorique[0].y,1);
             convert_texte("Adversaire invalide car deja mort",font ,ren, slotshistorique[1].x,slotshistorique[1].y,2);                
         } else if (*event == EVT_Adv){
-            printf("On fait ça \n");
             snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, attaquant.listedescapacites[select].nom);
             convert_texte(msg,font,ren,slotshistorique[0].x,slotshistorique[0].y,1); 
             snprintf(msg, sizeof(msg), "%s attaque %s",attaquant.name, defenseur.name);
@@ -493,7 +573,7 @@ void affichage_fight(SDL_Renderer *ren, Game_state * etat, Equipe_quatre atk, Eq
 
             affichage_attaque(attaquant,ren,font);
             SDL_RenderPresent(ren);
-            delay_safe(2000, ren); //2'' d'affichage 
+            delay_safe(1500, ren); //2'' d'affichage 
             *event = EVT_Vide;
 
         }

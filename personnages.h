@@ -10,7 +10,8 @@ typedef struct {
     char description[COMPO]; // Description de la capacité
     int damage; // Exprimé en %
     int type; // Type de la capacité
-    int cd; // Cooldown
+    int cd; // variable qui agit comme compteur
+    int cdreset; //variable fixe qui permet de stocker le cd 
 } Capa;
 
 typedef struct {

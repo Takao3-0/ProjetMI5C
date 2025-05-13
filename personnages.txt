@@ -11,70 +11,70 @@ Brume fraiche;Rend de la vie a l'utilisateur;35;1;3
 Torrent final;Attaque massive en eau concentree;80;1;5
 
 Kaelen;9000;9000;2300;180;75;180;5
-Éclat de glace;Projette un pic de glace;120;1000;0
-Souffle givré;Ralentit l'ennemi;100;1000;1
-Mur de givre;Crée un mur défensif;0;1000;3
-Tempête glaciale;Invoque une tempête;150;1000;4
+Eclat de glace;Projette un pic de glace;120;1000;0
+Souffle givre;Ralentit l'ennemi;100;1000;1
+Mur de givre;Cree un mur defensif;120;1000;3
+Tempete glaciale;Invoque une tempete;150;1000;4
 
 Voltix;12000;12000;1350;800;5;130;4
-Décharge;Frappe électrique rapide;110;100;0
-Champ magnétique;Réduit l'attaque ennemie;0;100;2
-Arc électrique;Cible plusieurs ennemis;130;100;3
-Surcharge;Inflige de lourds dégâts;160;100;5
+Decharge;Frappe electrique rapide;110;100;0
+Champ magnetique;Reduit l'attaque ennemie;100;100;2
+Arc electrique;Cible plusieurs ennemis;130;100;3
+Surcharge;Inflige de lourds degats;160;100;5
 
 Glacius;15000;15000;1500;500;5;180;5
 Frisson glacial;Attaque rapide;100;1000;0
-Mur de glace;Augmente la défense;0;1000;2
+Mur de glace;Augmente la defense;110;1000;2
 Coup givrant;Ralentit l'ennemi;120;1000;3
-Avalanche;Inflige de lourds dégâts;170;1000;5
+Avalanche;Inflige de lourds degats;170;1000;5
 
 Vulcain;13000;13000;1300;500;80;180;4
 Flamme Ardente;Enflamme l'adversaire;130;10;3
-Explosion Foudroyante;Projette une déflagration;150;10;4
-Bouclier de Feu;Crée un bouclier;160;10;2
+Explosion Foudroyante;Projette une deflagration;150;10;4
+Bouclier de Feu;Cree un bouclier;160;10;2
 Inferno;Attaque ultime;175;10;6
 
 Aqualis;11000;11000;1900;600;70;140;5
 Jet d'Eau;Projette un jet;135;1;2
-Marée Montante;Fait monter la marée;150;1;3
-Vague Dévastatrice;Inflige des dégâts;160;1;4
+Maree Montante;Fait monter la maree;150;1;3
+Vague Devastatrice;Inflige des degats;160;1;4
 Tsunami;Attaque ultime;190;1;7
 
 Terrorex;17000;17000;760;900;65;130;4
-Séisme Glacial;Fait trembler le sol;45;1000;3
+Seisme Glacial;Fait trembler le sol;45;1000;3
 Lame de Givre;Projette une lame de glace;50;1000;2
-Armure Gelée;Augmente fortement la défense;0;1000;3
-Éruption Glacée;Attaque ultime;200;1000;8
+Armure Gelee;Augmente fortement la defense;60;1000;3
+Eruption Glacee;Attaque ultime;200;1000;8
 
 Nova;11500;11500;1760;540;85;170;4
-Éclair Rapide;Lance un éclair fulgurant;35;100;2
-Choc Électrique;Fait étourdir l'adversaire;45;100;3
-Bouclier Ionique;Crée un bouclier électrifié;0;100;2
+Eclair Rapide;Lance un eclair fulgurant;35;100;2
+Choc Electrique;Fait etourdir l'adversaire;45;100;3
+Bouclier Ionique;Cree un bouclier electrifie;50;100;2
 Foudre Divine;Attaque ultime;180;100;6
 
 Calyra;9600;9600;1690;510;50;180;4
-Brasier;Une attaque rapide enflammée;40;10;2
+Brasier;Une attaque rapide enflammee;40;10;2
 Flamme Jumelle;Deux attaques de feu;50;10;3
-Rugissement de Feu;Augmente l'attaque;0;10;2
+Rugissement de Feu;Augmente l'attaque;80;10;2
 Incendiaire;Attaque ultime;165;10;5
 
 Pyrobane;11000;11000;1300;500;50;180;4
 Flammes Volantes;Des vagues de flammes ;50;10;2
-Brûlure Persistante;Inflige des dégâts;35;10;3
-Explosion Ardent;Libère une explosion de feu;70;10;4
-Mur de Braises;Crée un bouclier enflammé;0;10;5
+Brulure Persistante;Inflige des degats;35;10;3
+Explosion Ardent;Libere une explosion de feu;70;10;4
+Mur de Braises;Cree un bouclier enflamme;90;10;5
 
 Aquanova;16000;16000;1360;700;25;170;5
-Jet Rafraîchissant;Envoie un jet d'eau glacée;100;1;2
-Vague Déferlante;Submerge l'adversaire;120;1;3
-Brume Apaisante;Régénère une partie des PV;0;1;4
+Jet Rafraichissant;Envoie un jet d'eau glacee;100;1;2
+Vague Deferlante;Submerge l'adversaire;120;1;3
+Brume Apaisante;Regenere une partie des PV;20;1;4
 Cascade Turbulente;Projette plusieurs jets d'eau;130;1;5
 
 Voltazor;15000;15000;950;1200;50;175;4
-Étincelle;Lance une petite décharge électrique;40;100;2
-Choc Tonnerre;Produit un éclair puissant;60;100;3
+Etincelle;Lance une petite decharge electrique;40;100;2
+Choc Tonnerre;Produit un eclair puissant;60;100;3
 Champ Statique;Augmente l'esquive;100;100;4
-Foudre Déchaînée;Déchaîne plusieurs éclairs;90;100;5
+Foudre Dechainee;Dechaine plusieurs eclairs;90;100;5
 
 Criona;8200;8200;2400;425;75;165;5
 Pique de Glace;Projette une epine;145;1000;2
@@ -84,6 +84,6 @@ Blizzard Dechaine;Lance un tourbillon glacial;200;1000;5
 
 Arcaniste;12000;12000;1880;420;60;160;5
 Choc Ethere;Energie mystique;100;100;3
-Eclair fou;Eclair concentré;130;100;4
+Eclair fou;Eclair concentre;130;100;4
 Fulguro-Poing;Charge avec son poing;150;100;5
 Orage Dechaine;Fait pleuvoir l'orage;160;100;2

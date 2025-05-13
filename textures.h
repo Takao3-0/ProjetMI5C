@@ -81,6 +81,25 @@ extern SDL_Texture *HydragonF;
 extern SDL_Texture *KaelenF;
 extern SDL_Texture *VoltazorF;
 
+//Les cadres pour les fights 
+
+extern SDL_Texture *Dead;
+extern SDL_Texture *CrionaCadre;
+extern SDL_Texture *ArcanisteCadre;
+extern SDL_Texture *VoltixCadre;
+extern SDL_Texture *AqualisCadre;
+extern SDL_Texture *CalyraCadre;
+extern SDL_Texture *TerrorexCadre;
+extern SDL_Texture *GlaciusCadre;
+extern SDL_Texture *NovaCadre;
+extern SDL_Texture *VulcainCadre;
+extern SDL_Texture *AquanovaCadre;
+extern SDL_Texture *EmberaCadre;
+extern SDL_Texture *KaelenCadre;
+extern SDL_Texture *VoltazorCadre;
+extern SDL_Texture *PyrobaneCadre;
+extern SDL_Texture *HydragonCadre;
+
 SDL_Texture* LoadTexture(SDL_Renderer *renderer, const char *filePath);
 void Import_tex(SDL_Renderer *ren);
 

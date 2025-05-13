@@ -186,4 +186,13 @@ int main(int argc, char* argv[]) {
         }
 
     }
+    free(tabPerso);
+    TTF_CloseFont(font);
+    SDL_DestroyRenderer(ren);
+    SDL_DestroyWindow(win);
+    TTF_Quit();
+    IMG_Quit();
+    SDL_Quit();
+    return 0;
+    //Fin du jeux 
 }

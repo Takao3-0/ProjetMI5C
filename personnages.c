@@ -75,6 +75,7 @@ Personnage * extract(){
                     &perso.listedescapacites[j].damage,
                     &perso.listedescapacites[j].type,
                     &perso.listedescapacites[j].cd);
+                perso.listedescapacites[j].cdreset = perso.listedescapacites[j].cd;
                 /*printf(ROUGE"Capacite numero %d :\n"RESET  //à terme ce printf disparaitera.
                     "Nom : %s\n"
                     "Description : %s\n"

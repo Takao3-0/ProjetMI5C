@@ -79,6 +79,23 @@ SDL_Texture *HydragonF    = NULL;
 SDL_Texture *KaelenF      = NULL;
 SDL_Texture *VoltazorF    = NULL;
 
+SDL_Texture *CrionaCadre    = NULL;
+SDL_Texture *ArcanisteCadre = NULL;
+SDL_Texture *VoltixCadre    = NULL;
+SDL_Texture *AqualisCadre   = NULL;
+SDL_Texture *CalyraCadre    = NULL;
+SDL_Texture *TerrorexCadre  = NULL;
+SDL_Texture *GlaciusCadre   = NULL;
+SDL_Texture *NovaCadre      = NULL;
+SDL_Texture *VulcainCadre   = NULL;
+SDL_Texture *AquanovaCadre  = NULL;
+SDL_Texture *EmberaCadre    = NULL;
+SDL_Texture *KaelenCadre    = NULL;
+SDL_Texture *VoltazorCadre  = NULL;
+SDL_Texture *PyrobaneCadre  = NULL;
+SDL_Texture *HydragonCadre  = NULL;
+SDL_Texture *Dead           = NULL;
+
 //
 
 // implémentation du chargeur d'img
@@ -167,6 +184,25 @@ void Import_tex(SDL_Renderer *ren){
     HydragonF    = LoadTexture(ren, "assets/HydragonF.png");
     KaelenF      = LoadTexture(ren, "assets/KaelenF.png");
     VoltazorF    = LoadTexture(ren, "assets/VoltazorF.png");
+
+    //Les cadres
+
+    CrionaCadre    = LoadTexture(ren, "assets/CrionaCadre.png");
+    ArcanisteCadre = LoadTexture(ren, "assets/ArcanisteCadre.png");
+    VoltixCadre    = LoadTexture(ren, "assets/VoltixCadre.png");
+    AqualisCadre   = LoadTexture(ren, "assets/AqualisCadre.png");
+    CalyraCadre    = LoadTexture(ren, "assets/CalyraCadre.png");
+    TerrorexCadre  = LoadTexture(ren, "assets/TerrorexCadre.png");
+    GlaciusCadre   = LoadTexture(ren, "assets/GlaciusCadre.png");
+    NovaCadre      = LoadTexture(ren, "assets/NovaCadre.png");
+    VulcainCadre   = LoadTexture(ren, "assets/VulcainCadre.png");
+    AquanovaCadre  = LoadTexture(ren, "assets/AquanovaCadre.png");
+    EmberaCadre    = LoadTexture(ren, "assets/EmberaCadre.png");
+    KaelenCadre    = LoadTexture(ren, "assets/KaelenCadre.png");
+    VoltazorCadre  = LoadTexture(ren, "assets/VoltazorCadre.png");
+    PyrobaneCadre  = LoadTexture(ren, "assets/PyrobaneCadre.png");
+    HydragonCadre  = LoadTexture(ren, "assets/HydragonCadre.png");
+    Dead           = LoadTexture(ren, "assets/dead.png");
 
 
 }
